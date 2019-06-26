@@ -1,0 +1,19 @@
+# ignore everything
+/*
+/*/
+.DS_Store
+
+# ... but these:
+!/i3/
+!/polybar/
+!/ranger/
+!/compton/
+!/kitty/
+!/alacritty/
+!/Wallpapers/
+!/.Xmodmap
+!/.zshrc
+!/.bash_profile
+!/.inputrc
+!/.gitignore
+!/README.md
