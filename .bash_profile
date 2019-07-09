@@ -18,7 +18,7 @@ fi
 export CLICOLOR=1
 
 # \h:\W \u\$
-export PS1='\[\033[01;33m\]\u@\h\[\033[01;31m\] \W\[\033[01;34m\]$(__git_ps1 " (%s)")\[\033[00m\] '
+export PS1='\[\033[01;33m\]➜ \[\033[01;96m\] \W$(__git_ps1 " \[\033[01;34m\](\[\033[01;31m\]%s\[\033[01;34m\])")\[\033[00m\] '
 
 # grep
 alias grep="grep --color=always"
