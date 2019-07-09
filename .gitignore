@@ -14,6 +14,8 @@
 !/.Xmodmap
 !/.zshrc
 !/.bash_profile
+!/git-completion.bash
+!/git-prompt.sh
 !/.inputrc
 !/.gitignore
 !/README.md

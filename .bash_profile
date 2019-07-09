@@ -1,8 +1,24 @@
+if [[ -f ~/.bashrc ]]; then
+  . ~/.bashrc
+fi
+
+if [[ -f ~/.config/git-completion.bash ]]; then
+  . ~/.config/git-completion.bash
+fi
+
+if [[ -f ~/.config/git-prompt.sh ]]; then
+  . ~/.config/git-prompt.sh
+fi
+
+if [[ -f ~/.machine_specific_rc ]]; then
+  . ~/.machine_specific_rc
+fi
+
 # for color
 export CLICOLOR=1
 
 # \h:\W \u\$
-export PS1='\[\033[01;33m\]\u@\h\[\033[01;31m\] \W\$\[\033[00m\] '
+export PS1='\[\033[01;33m\]\u@\h\[\033[01;31m\] \W\[\033[01;34m\]$(__git_ps1 " (%s)")\[\033[00m\] '
 
 # grep
 alias grep="grep --color=always"
@@ -28,11 +44,16 @@ alias git-delete-local-tags="git tag | xargs git tag -d"
 #
 
 # The name of the current branch
-# Back-compatibility wrapper for when this function was defined here in
-# the plugin, before being pulled in to core lib/git.zsh as git_current_branch()
-# to fix the core -> git plugin dependency.
-function current_branch() {
-  git_current_branch
+function git_current_branch () {
+	local ref
+	ref=$(command git symbolic-ref --quiet HEAD 2> /dev/null)
+	local ret=$?
+	if [[ $ret != 0 ]]
+	then
+		[[ $ret == 128 ]] && return
+		ref=$(command git rev-parse --short HEAD 2> /dev/null)  || return
+	fi
+	echo ${ref#refs/heads/}
 }
 
 # Warn if the current branch is a WIP
@@ -208,11 +229,3 @@ alias glum='git pull upstream master'
 
 alias gwch='git whatchanged -p --abbrev-commit --pretty=medium'
 alias gwip='git add -A; git rm $(git ls-files --deleted) 2> /dev/null; git commit --no-verify --no-gpg-sign -m "--wip-- [skip ci]"'
-
-if [[ -f ~/.bashrc ]]; then
-  . ~/.bashrc
-fi
-
-if [[ -f ~/.machine_specific_rc ]]; then
-  . ~/.machine_specific_rc
-fi
