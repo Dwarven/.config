@@ -15,7 +15,7 @@ set $mod Mod1
 ### My Settings ###
 ###################
 
-exec --no-startup-id feh --bg-max ~/.config/Wallpapers/Dark\ Ranger.jpg
+exec --no-startup-id feh --bg-fill $HOME/.config/Wallpapers/Dark\ Ranger.jpg
 exec --no-startup-id xrandr --output Virtual-1 --mode 1440x900
 exec --no-startup-id compton -b
 
@@ -27,7 +27,7 @@ bindsym $mod+o exec --no-startup-id "light -U 10; notify-send 'brightness down'"
 # Start Applications
 bindsym $mod+F1 exec ss-qt5
 bindsym $mod+F2 exec google-chrome-stable
-bindsym $mod+Shift+F2 exec google-chrome-stable --proxy-server="socks5://localhost:1080"
+bindsym $mod+Shift+F2 exec google-chrome-stable --proxy-server="socks5://localhost:1086"
 bindsym $mod+t exec --no-startup-id pkill compton
 bindsym $mod+Shift+t exec --no-startup-id compton -b
 
