@@ -4,8 +4,11 @@
 .DS_Store
 
 # ... but these:
-!/i3/
-!/polybar/
+!/i3/config-vm
+!/i3/config-desktop-4k
+!/polybar/launch.sh
+!/polybar/config-vm
+!/polybar/config-desktop-4k
 !/ranger/
 !/compton/
 !/kitty/
