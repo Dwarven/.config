@@ -57,7 +57,7 @@ font-2 = siji:pixelsize=20;2
 
 modules-left = i3
 modules-center = 
-modules-right = filesystem pulseaudio xkeyboard memory cpu eth date powermenu
+modules-right = wifi filesystem pulseaudio xkeyboard memory cpu cpu-bottom eth date powermenu
 
 tray-position = right
 tray-padding = 2
@@ -80,6 +80,47 @@ tray-maxsize = 28
 
 cursor-click = pointer
 cursor-scroll = ns-resize
+
+[bar/bottom]
+bottom = true
+width = 100%
+height = 20
+offset-x = 0
+offset-y = 0
+
+background = #2B2E37
+foreground = #ccfafafa
+
+spacing = 1
+lineheight = 1
+
+padding-left = 0
+padding-right = 2
+
+module-margin-left = 1
+module-margin-right = 2
+
+;font-0 = unifont:size=9;1
+;font-1 = tamsyn:pixelsize=10;0
+;font-2 = unifont:size=6;-1
+
+font-0 = NotoSans-Regular:size=8;0
+font-1 = MaterialIcons:size=10;0
+font-2 = Termsynu:size=8;-1
+font-3 = FontAwesome:size=10;0
+font-4 = unifont:size=6;-3
+font-5 = siji:size=6;-3
+font-6 = FreeMono:size=10;0
+
+separator = |
+
+modules-left = i3-bottom
+modules-center =
+modules-right = volume backlight cpu-bottom battery wifi wired
+
+;tray-position = right
+
+wm-restack = i3
 
 [bar/example]
 ;monitor = ${env:MONITOR:HDMI-1}
@@ -220,6 +261,29 @@ label-urgent-padding = 2
 ; Separator in between workspaces
 ; label-separator = |
 
+[module/i3-bottom]
+type = internal/i3
+format = <label-state>
+
+;pin-workspaces = true
+;wsname-maxlen = 1
+;index-sort = true
+
+label-focused = o %index%
+label-focused-background = #ee333333
+label-focused-underline= #cc333333
+label-focused-padding = 2
+
+label-unfocused = %{O-1}⏺%{O-1} %index%
+label-unfocused-padding = 2
+
+label-urgent = ! %index%
+label-urgent-background = #bd2c40
+label-urgent-padding = 2
+
+label-visible = x %index%
+label-visible-foreground = #444
+label-visible-padding = 2
 
 [module/mpd]
 type = internal/mpd
@@ -264,6 +328,53 @@ format-prefix-foreground = ${colors.foreground-alt}
 format-underline = #f90000
 label = %percentage:2%%
 
+[module/cpu-bottom]
+type = internal/cpu
+interval = 0.2
+
+format = <label> <ramp-coreload>
+label = 
+
+ramp-coreload-0 = ▁
+ramp-coreload-0-font = 2
+ramp-coreload-0-foreground = #55aa55
+ramp-coreload-1 = ▂
+ramp-coreload-1-font = 2
+ramp-coreload-1-foreground = #55aa55
+ramp-coreload-2 = ▃
+ramp-coreload-2-font = 2
+ramp-coreload-2-foreground = #55aa55
+ramp-coreload-3 = ▄
+ramp-coreload-3-font = 2
+ramp-coreload-3-foreground = #55aa55
+ramp-coreload-4 = ▅
+ramp-coreload-4-font = 2
+ramp-coreload-4-foreground = #f5a70a
+ramp-coreload-5 = ▆
+ramp-coreload-5-font = 2
+ramp-coreload-5-foreground = #f5a70a
+ramp-coreload-6 = ▇
+ramp-coreload-6-font = 2
+ramp-coreload-6-foreground = #ff5555
+ramp-coreload-7 = █
+ramp-coreload-7-font = 2
+ramp-coreload-7-foreground = #ff5555
+
+bar-load-width = 20
+bar-load-foreground-0 = #55aa55
+bar-load-foreground-1 = #55aa55
+bar-load-foreground-2 = #f5a70a
+bar-load-foreground-3 = #ff5555
+bar-load-gradient = false
+bar-load-indicator = │
+bar-load-indicator-font = 2
+bar-load-indicator-foreground = #ff
+bar-load-fill = ━
+bar-load-fill-font = 2
+bar-load-empty = ━
+bar-load-empty-font = 2
+bar-load-empty-foreground = #444444
+
 [module/memory]
 type = internal/memory
 interval = 2
@@ -271,6 +382,22 @@ format-prefix = " "
 format-prefix-foreground = ${colors.foreground-alt}
 format-underline = #4bffdc
 label = %percentage_used%%
+
+[module/wifi]
+type = internal/network
+interface = wlp5s0
+interval = 0.2
+ping_interval = 10
+udspeed:min = 3
+format-connected = <ramp-signal> <label-connected>
+label-connected = %ifname% %essid% %{F#66}%local_ip% %{F#ff}%{T6}↑ %upspeed% ↓ %downspeed%%{T-}
+
+ramp-signal-0 = 
+ramp-signal-1 = 
+ramp-signal-2 = 
+ramp-signal-3 = 
+ramp-signal-4 = 
+ramp-signal-foreground = ${colors.foreground-alt}
 
 [module/wlan]
 type = internal/network
@@ -296,7 +423,7 @@ ramp-signal-foreground = ${colors.foreground-alt}
 
 [module/eth]
 type = internal/network
-interface = ens32
+interface = eno1
 interval = 3.0
 
 format-connected-underline = #55aa55
