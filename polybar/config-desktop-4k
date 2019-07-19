@@ -61,6 +61,9 @@ modules-right = filesystem pulseaudio xkeyboard memory cpu eth date powermenu
 
 tray-position = right
 tray-padding = 2
+;Make sure using the right DPI/SCALE for GTK/QT
+tray-scale = 1.0
+tray-maxsize = 28
 ;tray-background = #0063ff
 ;tray-reparent = true
 
