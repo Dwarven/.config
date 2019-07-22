@@ -28,6 +28,7 @@ bindsym $mod+o exec --no-startup-id "light -U 10; notify-send 'brightness down'"
 # Start Applications
 bindsym $mod+F1 exec ss-qt5
 bindsym $mod+F2 exec chromium
+bindsym $mod+slash exec thunar
 bindsym $mod+Shift+F2 exec chromium --proxy-server="socks5://localhost:1086"
 bindsym $mod+F3 exec netease-cloud-music --force-device-scale-factor=2
 bindsym $mod+t exec --no-startup-id pkill compton
