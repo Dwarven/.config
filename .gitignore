@@ -4,6 +4,8 @@
 .DS_Store
 
 # ... but these:
+!*.itermcolors
+!*.terminal
 !/i3/xinitrc
 !/i3/config-vm
 !/i3/config-desktop-4k
