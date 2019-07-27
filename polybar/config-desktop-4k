@@ -56,7 +56,7 @@ font-1 = unifont:fontformat=truetype:size=16:antialias=false;0
 font-2 = siji:pixelsize=20;2
 
 modules-left = i3
-modules-center = 
+modules-center = xwindow
 modules-right = wifi filesystem pulseaudio xkeyboard temperature memory cpu cpu-bottom eth date powermenu
 
 tray-position = right
@@ -174,7 +174,7 @@ cursor-scroll = ns-resize
 
 [module/xwindow]
 type = internal/xwindow
-label = %title:0:30:...%
+label = %title:0:50:...%
 
 [module/xkeyboard]
 type = internal/xkeyboard
