@@ -57,7 +57,7 @@ font-2 = siji:pixelsize=20;2
 
 modules-left = i3
 modules-center = 
-modules-right = wifi filesystem pulseaudio xkeyboard memory cpu cpu-bottom eth date powermenu
+modules-right = wifi filesystem pulseaudio xkeyboard temperature memory cpu cpu-bottom eth date powermenu
 
 tray-position = right
 tray-padding = 2
@@ -386,7 +386,7 @@ label = %percentage_used%%
 [module/wifi]
 type = internal/network
 interface = wlp5s0
-interval = 0.2
+interval = 0.5
 ping_interval = 10
 udspeed:min = 3
 format-connected = <ramp-signal> <label-connected>
