@@ -205,5 +205,6 @@ bindsym $mod+r mode "resize"
 # }
 
 exec_always --no-startup-id chmod +x $HOME/.config/polybar/launch.sh; $HOME/.config/polybar/launch.sh
+exec_always --no-startup-id killall clipmenud; clipmenud
 for_window [class="^.*"] border pixel 0
 gaps inner 5
