@@ -20,6 +20,9 @@ exec --no-startup-id fcitx
 # exec --no-startup-id xrandr --output Virtual-1 --mode 1440x900
 exec --no-startup-id compton -b
 
+# lock screen
+bindsym $mod+Mod4+l exec --no-startup-id i3lock -fi $HOME/.config/Wallpapers/Arch\ 4K.png
+
 # Screen brightness controls
 # dependencies light libnotify
 bindsym $mod+p exec --no-startup-id "light -A 10; notify-send 'brightness up'"
