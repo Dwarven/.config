@@ -15,7 +15,7 @@ set $mod Mod1
 ### My Settings ###
 ###################
 
-exec --no-startup-id feh --bg-fill $HOME/.config/Wallpapers/Dark\ Ranger.jpg
+exec --no-startup-id feh --fullscreen --bg-fill $HOME/.config/Wallpapers/Dark\ Ranger.jpg
 exec --no-startup-id fcitx
 exec --no-startup-id xrandr --output Virtual-1 --mode 1440x900
 exec --no-startup-id compton -b
