@@ -5,9 +5,10 @@ fi
 
 # User specific environment and startup programs
 
-PATH=$PATH:$HOME/bin
-
-export PATH
+if [[ -d $HOME/bin ]]; then
+  PATH=$PATH:$HOME/bin
+  export PATH
+fi
 
 if [[ -f ~/.config/git-completion.bash ]]; then
   . ~/.config/git-completion.bash
