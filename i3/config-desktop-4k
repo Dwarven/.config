@@ -33,7 +33,7 @@ bindsym $mod+F1 exec ss-qt5
 bindsym $mod+F2 exec chromium
 bindsym $mod+slash exec thunar
 bindsym $mod+Shift+slash exec sudo -E thunar
-bindsym $mod+Shift+F2 exec chromium --proxy-server="socks5://localhost:1086"
+bindsym $mod+Shift+F2 exec chromium --proxy-server="socks5://localhost:1080"
 bindsym $mod+F3 exec netease-cloud-music --force-device-scale-factor=2
 bindsym $mod+t exec --no-startup-id pkill compton
 bindsym $mod+Shift+t exec --no-startup-id compton -b
