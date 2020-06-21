@@ -115,6 +115,21 @@ alias git-reload-local-remote-branchs="(git branch -r | grep --color=never 'orig
 alias git-delete-origin-feature-branchs="git branch -r| grep --color=never 'origin' | grep -v -E 'master|develop' | sed 's/origin\///g' | xargs -I {} git push origin :{}"
 alias git-delete-local-tags="git tag | xargs git tag -d"
 
+#
+# lazygit
+#
+function zle_eval {
+  echo -en "\e[2K\r"
+  eval "$@"
+  zle redisplay
+}
+
+function openlazygit {
+  zle_eval lazygit
+}
+
+zle -N openlazygit; bindkey "^G" openlazygit
+
 if [[ -f ~/.machine_specific_rc ]]; then
   . ~/.machine_specific_rc
 fi
