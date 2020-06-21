@@ -1,0 +1,17 @@
+reporting: "off"
+startuppopupversion: 1
+gui:
+  theme:
+    lightTheme: false
+    activeBorderColor:
+      - cyan
+      - bold
+    inactiveBorderColor:
+      - white
+    optionsTextColor:
+      - blue
+    selectedLineBgColor:
+      - default
+      - reverse
+    selectedRangeBgColor:
+      - blue
