@@ -104,6 +104,11 @@ alias flush-mac-dns="[[ \`uname -a\` == Darwin* ]] && bash -c 'sudo killall -HUP
 alias allow-mac-apps-from-anywhere="[[ \`uname -a\` == Darwin* ]] && sudo spctl --master-disable"
 
 #
+# ranger
+#
+alias ra='ranger --choosedir=$HOME/.rangerdir; LASTDIR=`cat $HOME/.rangerdir`; cd "$LASTDIR"'
+
+#
 # My Git Functions
 #
 alias git-reload-local-remote-branchs="(git branch -r | grep --color=never 'origin/feature' | xargs git branch -d -r) && (git branch -r | grep --color=never 'upstream/feature' | xargs git branch -d -r) && (git fetch --all)"
