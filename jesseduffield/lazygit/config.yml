@@ -15,3 +15,6 @@ gui:
       - reverse
     selectedRangeBgColor:
       - blue
+keybinding:
+  universal:
+    filteringMenu: '<c-f>'
