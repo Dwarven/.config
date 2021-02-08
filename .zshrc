@@ -130,6 +130,10 @@ function openlazygit {
 
 zle -N openlazygit; bindkey "^G" openlazygit
 
+if [ "$(uname)"=="Darwin" ] && [ "$(uname -m)"=="arm64" ] && [ "$(which brew)"=="brew not found" ]; then
+    export PATH="$PATH:/opt/homebrew/bin"
+fi
+
 if [[ -f ~/.machine_specific_rc ]]; then
   . ~/.machine_specific_rc
 fi
