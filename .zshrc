@@ -116,6 +116,12 @@ alias git-delete-origin-feature-branchs="git branch -r| grep --color=never 'orig
 alias git-delete-local-tags="git tag | xargs git tag -d"
 
 #
+# tmux
+#
+alias tmn="tmux new -s"
+alias tma="tmux attach-session"
+
+#
 # lazygit
 #
 function zle_eval {

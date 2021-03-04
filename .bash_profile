@@ -18,10 +18,6 @@ if [[ -f ~/.config/git-prompt.sh ]]; then
   . ~/.config/git-prompt.sh
 fi
 
-if [ "$(uname)"=="Darwin" ] && [ "$(uname -m)"=="arm64" ] && [ "$(which brew)"=="brew not found" ]; then
-    export PATH="$PATH:/opt/homebrew/bin"
-fi
-
 if [[ -f ~/.machine_specific_rc ]]; then
   . ~/.machine_specific_rc
 fi
@@ -45,11 +41,41 @@ alias flush-mac-dns="[[ \`uname -a\` == Darwin* ]] && bash -c 'sudo killall -HUP
 alias allow-mac-apps="[[ \`uname -a\` == Darwin* ]] && sudo spctl --master-disable"
 
 #
+# ranger
+#
+alias ra='ranger --choosedir=$HOME/.rangerdir; LASTDIR=`cat $HOME/.rangerdir`; cd "$LASTDIR"'
+
+#
 # My Git Functions
 #
 alias git-reload-local-remote-branchs="(git branch -r | grep --color=never 'origin/feature' | xargs git branch -d -r) && (git branch -r | grep --color=never 'upstream/feature' | xargs git branch -d -r) && (git fetch --all)"
 alias git-delete-origin-feature-branchs="git branch -r| grep --color=never 'origin' | grep -v -E 'master|develop' | sed 's/origin\///g' | xargs -I {} git push origin :{}"
 alias git-delete-local-tags="git tag | xargs git tag -d"
+
+#
+# tmux
+#
+alias tmn="tmux new -s"
+alias tma="tmux attach-session"
+
+#
+# lazygit
+#
+function zle_eval {
+      echo -en "\e[2K\r"
+        eval "$@"
+          zle redisplay
+      }
+
+  function openlazygit {
+        zle_eval lazygit
+    }
+
+zle -N openlazygit; bindkey "^G" openlazygit
+
+if [ "$(uname)"=="Darwin" ] && [ "$(uname -m)"=="arm64" ] && [ "$(which brew)"=="brew not found" ]; then
+    export PATH="$PATH:/opt/homebrew/bin"
+fi
 
 #
 # Git Functions
