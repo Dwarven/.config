@@ -19,7 +19,7 @@
 !/alacritty/
 !/Wallpapers/
 !/.Xmodmap
-!/.zshrc
+!/zsh/
 !/.bash_profile
 !/git-completion.bash
 !/git-prompt.sh

@@ -140,6 +140,17 @@ if [ "$(uname)" = "Darwin" ] && [ "$(uname -m)" = "arm64" ] && [ "$(which brew)"
     export PATH="$PATH:/opt/homebrew/bin"
 fi
 
+#
+# fzf
+#
+export FZF_DEFAULT_OPTS='--preview "[[ $(file --mime {}) =~ binary ]] && echo {} is a binary file || (ccat --color=always {} || highlight -O ansi -l {} || cat {}) 2> /dev/null | head -500"'
+export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git -g ""' # ag in the_silver_searcher required
+export FZF_COMPLETION_TRIGGER='\'
+export FZF_TMUX_HEIGHT='80%'
+export FZF_PREVIEW_COMMAND='[[ $(file --mime {}) =~ binary ]] && echo {} is a binary file || (ccat --color=always {} || highlight -O ansi -l {} || cat {}) 2> /dev/null | head -500'
+source ~/.config/zsh/key-bindings.zsh
+source ~/.config/zsh/completion.zsh
+
 if [[ -f ~/.machine_specific_rc ]]; then
   . ~/.machine_specific_rc
 fi
