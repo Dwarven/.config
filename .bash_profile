@@ -51,6 +51,7 @@ alias ra='ranger --choosedir=$HOME/.rangerdir; LASTDIR=`cat $HOME/.rangerdir`; c
 alias git-reload-local-remote-branchs="(git branch -r | grep --color=never 'origin/feature' | xargs git branch -d -r) && (git branch -r | grep --color=never 'upstream/feature' | xargs git branch -d -r) && (git fetch --all)"
 alias git-delete-origin-feature-branchs="git branch -r| grep --color=never 'origin' | grep -v -E 'master|develop' | sed 's/origin\///g' | xargs -I {} git push origin :{}"
 alias git-delete-local-tags="git tag | xargs git tag -d"
+alias git-log-file="git log -- file"
 
 #
 # tmux
