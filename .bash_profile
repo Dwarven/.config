@@ -59,21 +59,6 @@ alias git-log-file="git log -- file"
 alias tmn="tmux new -s"
 alias tma="tmux attach-session"
 
-#
-# lazygit
-#
-function zle_eval {
-      echo -en "\e[2K\r"
-        eval "$@"
-          zle redisplay
-      }
-
-  function openlazygit {
-        zle_eval lazygit
-    }
-
-zle -N openlazygit; bindkey "^G" openlazygit
-
 if [ "$(uname)"=="Darwin" ] && [ "$(uname -m)"=="arm64" ] && [ "$(which brew)"=="brew not found" ]; then
     export PATH="$PATH:/opt/homebrew/bin"
 fi

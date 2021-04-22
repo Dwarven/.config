@@ -123,7 +123,7 @@ alias tmn="tmux new -s"
 alias tma="tmux attach-session"
 
 #
-# lazygit
+# zle_eval
 #
 function zle_eval {
   echo -en "\e[2K\r"
@@ -131,11 +131,16 @@ function zle_eval {
   zle redisplay
 }
 
-function openlazygit {
-  zle_eval lazygit
-}
 
-zle -N openlazygit; bindkey "^G" openlazygit
+#
+# lazygit
+#
+bindkey -s "^G" "lazygit^J"
+# function openlazygit {
+#   zle_eval lazygit
+# }
+# 
+# zle -N openlazygit; bindkey "^G" openlazygit
 
 if [ "$(uname)" = "Darwin" ] && [ "$(uname -m)" = "arm64" ] && [ "$(which brew)" = "brew not found" ]; then
     export PATH="$PATH:/opt/homebrew/bin"
