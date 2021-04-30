@@ -54,6 +54,11 @@ alias git-delete-local-tags="git tag | xargs git tag -d"
 alias git-log-file="git log -- file"
 
 #
+# Cleanup .DS_Store
+#
+alias cleanup_ds_store="find . -name .DS_Store -print0 | xargs -0 rm -rf"
+
+#
 # tmux
 #
 alias tmn="tmux new -s"
