@@ -115,6 +115,7 @@ alias git-reload-local-remote-branchs="(git branch -r | grep --color=never 'orig
 alias git-delete-origin-feature-branchs="git branch -r| grep --color=never 'origin' | grep -v -E 'master|develop' | sed 's/origin\///g' | xargs -I {} git push origin :{}"
 alias git-delete-local-tags="git tag | xargs git tag -d"
 alias git-log-file="git log -- file"
+alias ggc="rm -f .git/refs/remotes/origin/HEAD && git fsck && git gc --prune=now"
 
 #
 # Cleanup .DS_Store
