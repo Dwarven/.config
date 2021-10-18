@@ -70,8 +70,11 @@ alias make_zip="cleanup_ds_store && zip -r ${PWD##*/}.zip ./"
 alias tmn="tmux new -s"
 alias tma="tmux attach-session"
 
-if [ "$(uname)"=="Darwin" ] && [ "$(uname -m)"=="arm64" ] && [ "$(which brew)"=="brew not found" ]; then
+if [ "$(uname)"=="Darwin" ]; then
+  export PATH="/Applications/Sublime Text.app/Contents/SharedSupport/bin:$PATH"
+  if [ "$(uname -m)"=="arm64" ] && [ "$(which brew)"=="brew not found" ]; then
     export PATH="$PATH:/opt/homebrew/bin"
+  fi
 fi
 
 #
