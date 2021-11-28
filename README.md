@@ -1,4 +1,26 @@
 # .config
+
+## Setup
+
+### clone this repo
+```sh
+cd ~ && rm -rf .config && git clone https://github.com/Dwarven/.config.git
+```
+
+### Oh My Zsh
+```sh
+ln -sfv .config/zsh/zshrc ~/.zshrc
+```
+
+### lazygit
+```sh
+rm -rf ~/Library/Application\ Support/lazygit && ln -sfv ~/.config/lazygit ~/Library/Application\ Support
+```
+
+### iTerm2
+
+`Preferences` -> `General` -> `Preferences` -> `Load preferences from a custom folder or URL`, use the URL: https://github.com/Dwarven/.config/raw/master/iTerm2_Preferences/com.googlecode.iterm2.plist
+
 # auto suggestions
 
 ## Installation
