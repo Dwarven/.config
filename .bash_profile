@@ -22,6 +22,10 @@ if [[ -f ~/.machine_specific_rc ]]; then
   . ~/.machine_specific_rc
 fi
 
+if [[ -f ~/.intellij_rc ]]; then
+  . ~/.intellij_rc
+fi
+
 # for color
 export CLICOLOR=1
 
