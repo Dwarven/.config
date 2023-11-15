@@ -14,7 +14,7 @@ ln -sfv .config/zsh/zshrc ~/.zshrc
 
 ### lazygit
 ```sh
-rm -rf ~/Library/Application\ Support/lazygit && ln -sfv ~/.config/lazygit ~/Library/Application\ Support
+ln -sfv ~/.config/lazygit/config.yml ~/Library/Application\ Support/lazygit
 ```
 
 ### iTerm2
