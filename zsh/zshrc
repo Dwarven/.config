@@ -177,6 +177,7 @@ source ~/.config/zsh/completion.zsh
 
 if [ "$(uname)" = "Linux" ] ; then
     [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+    [ -f /etc/zsh_command_not_found ] && source /etc/zsh_command_not_found
 fi
 
 if [[ -f ~/.machine_specific_rc ]]; then
