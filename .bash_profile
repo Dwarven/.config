@@ -39,6 +39,7 @@ alias vi="vim"
 alias l="ls -CF"
 alias la="ls -A"
 alias ll="ls -alF"
+alias llh="ls -alFh"
 
 alias dns="cat /etc/resolv.conf"
 alias flush-mac-dns="[[ \`uname -a\` == Darwin* ]] && bash -c 'sudo killall -HUP mDNSResponder;sudo killall mDNSResponderHelper;sudo dscacheutil -flushcache'"
