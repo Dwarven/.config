@@ -1,4 +1,8 @@
 gui:
+  branchColorPatterns:
+    '^feature': green
+    '^bugfix': yellow
+    '^hotfix': red
   theme:
     selectedLineBgColor:
       - default
