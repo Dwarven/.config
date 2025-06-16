@@ -176,6 +176,11 @@ export FZF_PREVIEW_COMMAND='[[ $(file --mime {}) =~ binary ]] && echo {} is a bi
 source ~/.config/zsh/key-bindings.zsh
 source ~/.config/zsh/completion.zsh
 
+#
+# vim editor
+#
+bindkey '^v' edit-command-line
+
 if [ "$(uname)" = "Linux" ] ; then
     [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
     [ -f /etc/zsh_command_not_found ] && source /etc/zsh_command_not_found
