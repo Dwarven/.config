@@ -21,5 +21,8 @@ ln -sfv ~/.config/lazygit/config.yml ~/Library/Application\ Support/lazygit
 ```
 
 ### iTerm2
+```sh
+brew install font-symbols-only-nerd-font
+```
 
 `Preferences` -> `General` -> `Preferences` -> `Load preferences from a custom folder or URL`, use the URL: https://github.com/Dwarven/.config/raw/master/iTerm2_Preferences/com.googlecode.iterm2.plist
