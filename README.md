@@ -20,6 +20,11 @@ zimfw install
 ln -sfv ~/.config/lazygit/config.yml ~/Library/Application\ Support/lazygit
 ```
 
+### yazi
+```sh
+brew install ripgrep starship font-symbols-only-nerd-font yazi
+```
+
 ### iTerm2
 ```sh
 brew install font-symbols-only-nerd-font

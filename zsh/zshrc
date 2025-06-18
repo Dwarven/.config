@@ -175,7 +175,12 @@ alias glgg='git log --graph'
 #
 # ranger
 #
-alias ra='ranger --choosedir=$HOME/.rangerdir; LASTDIR=`cat $HOME/.rangerdir`; cd "$LASTDIR"'
+alias ra='ranger --choosedir=$HOME/.rangerdir; cd "$(cat $HOME/.rangerdir)"'
+
+#
+# yazi
+#
+alias yz='yazi --cwd-file=$HOME/.yazidir; cd "$(cat $HOME/.yazidir)"'
 
 #
 # Cleanup .DS_Store
