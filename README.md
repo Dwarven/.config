@@ -9,6 +9,7 @@ cd ~ && rm -rf .config && git clone https://github.com/Dwarven/.config.git
 
 ### [ZIM:FW](https://zimfw.sh)
 ```sh
+curl -fsSL https://raw.githubusercontent.com/zimfw/install/master/install.zsh | zsh
 ln -sfv .config/zsh/zimrc ~/.zimrc
 ln -sfv .config/zsh/zshrc ~/.zshrc
 zimfw install

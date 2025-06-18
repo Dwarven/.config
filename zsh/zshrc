@@ -132,8 +132,7 @@ unset key
 # User configuration
 # ------------------------------
 
-# minimal theme patch
-zstyle ':zim:prompt-pwd:tail' length 1
+# asciiship theme patch
 # git_info format from https://github.com/zimfw/sorin
 typeset -gA git_info
 if (( ${+functions[git-info]} )); then
@@ -155,8 +154,8 @@ if (( ${+functions[git-info]} )); then
   # Add hook for calling git-info before each command.
   autoload -Uz add-zsh-hook && add-zsh-hook precmd git-info
 fi
-PS1=$'%{\e[1m%}${SSH_TTY:+"%m "}${VIRTUAL_ENV:+"${VIRTUAL_ENV:t} "}%(1j.%{\E[12m%}.)%F{%(?.10.9)}%(!.#.➜%f%{\E[0m%}  %F{14}$(prompt-pwd)${(e)git_info[rprompt]}%f%{\e[22m%} '
-RPS1=''
+PS1=$'%{\e[1m%}${SSH_TTY:+"%m "}${VIRTUAL_ENV:+"${VIRTUAL_ENV:t} "}%(1j.%{\E[12m%}.)%F{%(?.10.9)}%(!.#.➜)%f%{\E[0m%}  %F{14}%1~${(e)git_info[rprompt]}%f%{\e[22m%} '
+unset RPS1
 
 # Aloxaf/fzf-tab
 zstyle ':fzf-tab:*' fzf-flags -i
@@ -169,8 +168,8 @@ alias dns="cat /etc/resolv.conf"
 alias flush-mac-dns="[[ \`uname -a\` == Darwin* ]] && bash -c 'sudo killall -HUP mDNSResponder;sudo killall mDNSResponderHelper;sudo dscacheutil -flushcache'"
 alias allow-mac-apps-from-anywhere="[[ \`uname -a\` == Darwin* ]] && sudo spctl --master-disable"
 
-alias gwRu='git rev-parse --abbrev-ref --symbolic-full-name @{u} >/dev/null 2>&1 && git reset --hard @{u} || echo "\e[31mNo tracking remote branch. Skipping reset.\e[0m"'
-alias gwru='git rev-parse --abbrev-ref --symbolic-full-name @{u} >/dev/null 2>&1 && git reset  --soft @{u} || echo "\e[31mNo tracking remote branch. Skipping reset.\e[0m"'
+alias gwRu='git rev-parse --abbrev-ref --symbolic-full-name @{u} >/dev/null 2>&1 && git reset --hard @{u} || echo "\e[1;31mNo tracking remote branch. Skipping reset.\e[0m"'
+alias gwru='git rev-parse --abbrev-ref --symbolic-full-name @{u} >/dev/null 2>&1 && git reset  --soft @{u} || echo "\e[1;31mNo tracking remote branch. Skipping reset.\e[0m"'
 alias glgg='git log --graph'
 
 #

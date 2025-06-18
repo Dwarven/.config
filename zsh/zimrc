@@ -23,12 +23,12 @@ zmodule utility
 # Prompt
 #
 
-# Formats the current working directory to be used by prompts, used by minimal.
-zmodule prompt-pwd
-# Exposes git repository status information to prompts, used by minimal.
+# Exposes to prompts how long the last command took to execute, used by asciiship.
+zmodule duration-info
+# Exposes git repository status information to prompts, used by asciiship.
 zmodule git-info
-# A minimal fork of subnixr's minimal prompt theme.
-zmodule minimal
+# A heavily reduced, ASCII-only version of the Spaceship and Starship prompts.
+zmodule asciiship
 
 #
 # Completion
