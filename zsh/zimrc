@@ -23,12 +23,12 @@ zmodule utility
 # Prompt
 #
 
-# Exposes to prompts how long the last command took to execute, used by asciiship.
-zmodule duration-info
-# Exposes git repository status information to prompts, used by asciiship.
+# Formats the current working directory to be used by prompts, used by minimal.
+zmodule prompt-pwd
+# Exposes git repository status information to prompts, used by minimal.
 zmodule git-info
-# A heavily reduced, ASCII-only version of the Spaceship and Starship prompts.
-zmodule asciiship
+# A minimal fork of subnixr's minimal prompt theme.
+zmodule minimal
 
 #
 # Completion
@@ -45,8 +45,8 @@ zmodule completion
 #
 
 # Fish-like syntax highlighting for Zsh.
-# zsh-users/zsh-syntax-highlighting must be sourced after completion
-zmodule zsh-users/zsh-syntax-highlighting
+# zdharma-continuum/fast-syntax-highlighting must be sourced after completion
+zmodule zdharma-continuum/fast-syntax-highlighting
 # Fish-like history search (up arrow) for Zsh.
 # zsh-users/zsh-history-substring-search must be sourced after zsh-users/zsh-syntax-highlighting
 zmodule zsh-users/zsh-history-substring-search
@@ -54,3 +54,5 @@ zmodule zsh-users/zsh-history-substring-search
 zmodule zsh-users/zsh-autosuggestions
 # }}} End configuration added by Zim install
 
+# Replace zsh's default completion selection menu with fzf!
+zmodule Aloxaf/fzf-tab

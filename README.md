@@ -11,6 +11,7 @@ cd ~ && rm -rf .config && git clone https://github.com/Dwarven/.config.git
 ```sh
 ln -sfv .config/zsh/zimrc ~/.zimrc
 ln -sfv .config/zsh/zshrc ~/.zshrc
+zimfw install
 ```
 
 ### lazygit

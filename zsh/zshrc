@@ -46,7 +46,7 @@ WORDCHARS=${WORDCHARS//[\/]}
 #
 
 # Set a custom prefix for the generated aliases. The default prefix is 'G'.
-#zstyle ':zim:git' aliases-prefix 'g'
+zstyle ':zim:git' aliases-prefix 'g'
 
 #
 # input
@@ -128,3 +128,104 @@ for key ('j') bindkey -M vicmd ${key} history-substring-search-down
 unset key
 # }}} End configuration added by Zim install
 
+# ------------------------------
+# User configuration
+# ------------------------------
+
+# minimal theme patch
+zstyle ':zim:prompt-pwd:tail' length 1
+# git_info format from https://github.com/zimfw/sorin
+typeset -gA git_info
+if (( ${+functions[git-info]} )); then
+  # Set git-info parameters.
+  zstyle ':zim:git-info' verbose yes
+  zstyle ':zim:git-info:action' format '%F{default}:%F{1}%s'
+  zstyle ':zim:git-info:ahead' format ' %F{11}⬆'
+  zstyle ':zim:git-info:behind' format ' %F{10}⬇'
+  zstyle ':zim:git-info:branch' format ' %F{12}git:(%F{9}%b%F{12})'
+  zstyle ':zim:git-info:commit' format ' %F{3}%c'
+  zstyle ':zim:git-info:indexed' format ' %F{2}+'
+  zstyle ':zim:git-info:unindexed' format ' %F{4}!'
+  zstyle ':zim:git-info:position' format ' %F{5}%p'
+  zstyle ':zim:git-info:stashed' format ' %F{6}\$'
+  zstyle ':zim:git-info:untracked' format ' %F{11}?'
+  zstyle ':zim:git-info:keys' format \
+    'rprompt' '%b$(coalesce %p %c)%s%A%B%S%i%I%u'
+
+  # Add hook for calling git-info before each command.
+  autoload -Uz add-zsh-hook && add-zsh-hook precmd git-info
+fi
+PS1=$'%{\e[1m%}${SSH_TTY:+"%m "}${VIRTUAL_ENV:+"${VIRTUAL_ENV:t} "}%(1j.%{\E[12m%}.)%F{%(?.10.9)}%(!.#.➜%f%{\E[0m%}  %F{14}$(prompt-pwd)${(e)git_info[rprompt]}%f%{\e[22m%} '
+RPS1=''
+
+# Aloxaf/fzf-tab
+zstyle ':fzf-tab:*' fzf-flags -i
+
+# alias
+alias vi="vim"
+alias ll="ls -alF"
+alias llh="ls -alFh"
+alias dns="cat /etc/resolv.conf"
+alias flush-mac-dns="[[ \`uname -a\` == Darwin* ]] && bash -c 'sudo killall -HUP mDNSResponder;sudo killall mDNSResponderHelper;sudo dscacheutil -flushcache'"
+alias allow-mac-apps-from-anywhere="[[ \`uname -a\` == Darwin* ]] && sudo spctl --master-disable"
+
+alias gwRu='git rev-parse --abbrev-ref --symbolic-full-name @{u} >/dev/null 2>&1 && git reset --hard @{u} || echo "\e[31mNo tracking remote branch. Skipping reset.\e[0m"'
+alias gwru='git rev-parse --abbrev-ref --symbolic-full-name @{u} >/dev/null 2>&1 && git reset  --soft @{u} || echo "\e[31mNo tracking remote branch. Skipping reset.\e[0m"'
+alias glgg='git log --graph'
+
+#
+# ranger
+#
+alias ra='ranger --choosedir=$HOME/.rangerdir; LASTDIR=`cat $HOME/.rangerdir`; cd "$LASTDIR"'
+
+#
+# Cleanup .DS_Store
+#
+alias cleanup_ds_store="find . -name .DS_Store -print0 | xargs -0 rm -rf"
+
+#
+# make zip
+#
+alias make_zip='cleanup_ds_store && zip -r "${PWD##*/}".zip ./'
+
+#
+# tmux
+#
+alias tmn="tmux new -s"
+alias tma="tmux attach-session"
+
+#
+# lazygit
+#
+bindkey -s "^G" "lazygit^J"
+
+#
+# edit-command-line
+#
+bindkey '^v' edit-command-line
+
+if [ "$(uname)" = "Darwin" ]; then
+  export PATH="/Applications/Sublime Text.app/Contents/SharedSupport/bin:$PATH"
+  if [ "$(which brew)" = "brew not found" ] && [ "$(uname -m)" = "arm64" ]; then
+    export PATH="$PATH:/opt/homebrew/bin"
+  fi
+fi
+
+#
+# fzf
+#
+# brew install ccat fzf the_silver_searcher
+#
+export FZF_DEFAULT_OPTS='--preview "[[ $(file --mime {}) =~ binary ]] && echo {} is a binary file || (ccat --color=always {} || highlight -O ansi -l {} || cat {}) 2> /dev/null | head -500"'
+export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git -g ""'
+export FZF_COMPLETION_TRIGGER='\'
+export FZF_TMUX=1
+export FZF_TMUX_HEIGHT='80%'
+export FZF_PREVIEW_COMMAND='[[ $(file --mime {}) =~ binary ]] && echo {} is a binary file || (ccat --color=always {} || highlight -O ansi -l {} || cat {}) 2> /dev/null | head -500'
+[ -f ~/.config/zsh/fzf.zsh ] && source ~/.config/zsh/fzf.zsh
+
+[ "$(uname)" = "Linux" ] && [ -f /etc/zsh_command_not_found ] && source /etc/zsh_command_not_found
+
+[ -f ~/.machine_specific_rc ] && . ~/.machine_specific_rc
+
+[ -f ~/.intellij_rc ] && . ~/.intellij_rc
