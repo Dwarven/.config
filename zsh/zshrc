@@ -19,7 +19,7 @@ setopt HIST_IGNORE_ALL_DUPS
 #
 
 # Set editor default keymap to emacs (`-e`) or vi (`-v`)
-bindkey -e
+# bindkey -e
 
 # Prompt for spelling correction of commands.
 #setopt CORRECT
@@ -181,6 +181,8 @@ alias ra='ranger --choosedir=$HOME/.rangerdir; cd "$(cat $HOME/.rangerdir)"'
 # yazi
 #
 alias yz='yazi --cwd-file=$HOME/.yazidir; cd "$(cat $HOME/.yazidir)"'
+bindkey -s "^Y" "yz^J"
+bindkey -M viins -s '^Y' 'yz^J'
 
 #
 # Cleanup .DS_Store
@@ -202,12 +204,43 @@ alias tma="tmux attach-session"
 # lazygit
 #
 bindkey -s "^G" "lazygit^J"
+bindkey -M viins -s '^G' 'lazygit^J'
 
 #
 # edit-command-line
 #
-bindkey '^v' edit-command-line
+# bindkey '^v' edit-command-line
+bindkey -v
+function zle-keymap-select {
+	if [[ ${KEYMAP} == vicmd ]] || [[ $1 = 'block' ]]; then
+		echo -ne '\e[1 q'
+	elif [[ ${KEYMAP} == main ]] || [[ ${KEYMAP} == viins ]] || [[ ${KEYMAP} = '' ]] || [[ $1 = 'beam' ]]; then
+		echo -ne '\e[5 q'
+  fi
+}
+zle -N zle-keymap-select
 
+# Use beam shape cursor on startup.
+echo -ne '\e[5 q'
+
+# Use beam shape cursor for each new prompt.
+preexec() {
+	echo -ne '\e[5 q'
+}
+
+_fix_cursor() {
+	echo -ne '\e[5 q'
+}
+precmd_functions+=(_fix_cursor)
+
+KEYTIMEOUT=1
+
+bindkey -M viins "${terminfo[kcuu1]}" history-beginning-search-backward
+bindkey -M viins "${terminfo[kcud1]}" history-beginning-search-forward
+
+#
+# brew
+#
 if [ "$(uname)" = "Darwin" ]; then
   export PATH="/Applications/Sublime Text.app/Contents/SharedSupport/bin:$PATH"
   if [ "$(which brew)" = "brew not found" ] && [ "$(uname -m)" = "arm64" ]; then
