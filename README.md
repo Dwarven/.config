@@ -22,12 +22,12 @@ ln -sfv ~/.config/lazygit/config.yml ~/Library/Application\ Support/lazygit
 
 ### yazi
 ```sh
-brew install ripgrep starship font-symbols-only-nerd-font yazi
+brew install ripgrep starship font-meslo-lg-nerd-font yazi
 ```
 
 ### iTerm2
 ```sh
-brew install font-symbols-only-nerd-font
+brew install font-meslo-lg-nerd-font
 ```
 
 `Preferences` -> `General` -> `Preferences` -> `Load preferences from a custom folder or URL`, use the URL: https://github.com/Dwarven/.config/raw/master/iTerm2_Preferences/com.googlecode.iterm2.plist
