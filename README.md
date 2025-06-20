@@ -15,17 +15,17 @@ ln -sfv .config/zsh/zshrc ~/.zshrc
 zimfw install
 ```
 
-### lazygit
+### [lazygit](https://github.com/jesseduffield/lazygit)
 ```sh
 ln -sfv ~/.config/lazygit/config.yml ~/Library/Application\ Support/lazygit
 ```
 
-### yazi
+### [yazi](https://yazi-rs.github.io)
 ```sh
 brew install ouch nushell vlc ripgrep starship font-meslo-lg-nerd-font yazi
 ```
 
-### iTerm2
+### [iTerm2](https://iterm2.com)
 ```sh
 brew install font-meslo-lg-nerd-font
 ```
