@@ -13,6 +13,16 @@ use = "Rolv-Apneseth/starship"
 rev = "6a0f3f7"
 hash = "d5a74d95c2e8194ac352c5e10e81e64f"
 
+[[plugin.deps]]
+use = "yazi-rs/plugins:diff"
+rev = "86d28e4"
+hash = "47865a70cade14a0b9b6bc6a54f16bdb"
+
+[[plugin.deps]]
+use = "ndtoan96/ouch"
+rev = "1ee69a5"
+hash = "63679f3daf8551ff8755be38b5ced0f"
+
 [[flavor.deps]]
 use = "yazi-rs/flavors:dracula"
 rev = "d04a298"

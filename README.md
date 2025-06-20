@@ -22,7 +22,7 @@ ln -sfv ~/.config/lazygit/config.yml ~/Library/Application\ Support/lazygit
 
 ### yazi
 ```sh
-brew install ripgrep starship font-meslo-lg-nerd-font yazi
+brew install ouch nushell vlc ripgrep starship font-meslo-lg-nerd-font yazi
 ```
 
 ### iTerm2

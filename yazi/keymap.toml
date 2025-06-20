@@ -4,6 +4,64 @@
 
 [mgr]
 
+prepend_keymap = [
+	# Hopping
+	{ on = "<C-d>", run = "plugin diff", desc = "Diff the selected with the hovered file" },
+	{ on = "<C-k>", run = "arrow -50%",  desc = "Move cursor up half page" },
+	{ on = "<C-j>", run = "arrow 50%",   desc = "Move cursor down half page" },
+
+	# Navigation
+	{ on = "l", run = "plugin smart-enter", desc = "Enter the child directory" },
+
+	# Toggle
+
+	# Visual mode
+
+	# Seeking
+
+	# Spotting
+
+	# Operation
+	{ on = [ "C" ],      run = "plugin ouch",                     desc = "Compress with ouch" },
+	{ on = [ "c", "w" ], run = "rename --cursor=before_ext",      desc = "Rename selected file(s)" },
+	{ on = "M",          run = "shell --interactive 'mkdir '",    desc = "Create a directory" },
+	{ on = "<C-f>",      run = "plugin fzf",                      desc = "Jump to a file/directory via fzf" },
+	{ on = "<C-g>",      run = "shell --confirm --block lazygit", desc = "Lazygit" },
+
+	# Linemode
+
+	# Copy
+
+	# Filter
+
+	# Find
+    { on = "F", run = "search rg", desc = "Search files by content using ripgrep" },
+
+	# Sorting
+
+	# Goto
+	{ on = [ "g", "/" ],       run = "cd /",             desc = "Go /" },
+	{ on = [ "g", "d" ],       run = "cd ~/Documents",   desc = "Go ~/Documents" },
+	{ on = [ "g", "D" ],       run = "cd ~/Desktop",     desc = "Go ~/Desktop" },
+
+	# Tabs
+
+	# Tasks
+
+	# Help
+
+	# TD-Sky/sudo
+	{ on = ["R", "p", "p"],  run = "plugin sudo -- paste",                desc = "sudo paste" },              # cp/mv
+	{ on = ["R", "P"],       run = "plugin sudo -- paste --force",        desc = "sudo paste" },              # cp/mv --force
+	{ on = ["R", "r"],       run = "plugin sudo -- rename",               desc = "sudo rename" },             # mv
+	{ on = ["R", "p", "l"],  run = "plugin sudo -- link",                 desc = "sudo link" },               # ln -s (absolute-path)
+	{ on = ["R", "p", "r"],  run = "plugin sudo -- link --relative",      desc = "sudo link relative path" }, # ln -s (relative-path)
+	{ on = ["R", "p", "L"],  run = "plugin sudo -- hardlink",             desc = "sudo hardlink" },           # ln
+	{ on = ["R", "a"],       run = "plugin sudo -- create",               desc = "sudo create" },             # touch/mkdir
+	{ on = ["R", "d"],       run = "plugin sudo -- remove",               desc = "sudo trash" },              # trash
+	{ on = ["R", "D"],       run = "plugin sudo -- remove --permanently", desc = "sudo delete" },             # delete
+]
+
 keymap = [
 	{ on = "<Esc>", run = "escape",             desc = "Exit visual mode, clear selection, or cancel search" },
 	{ on = "<C-[>", run = "escape",             desc = "Exit visual mode, clear selection, or cancel search" },
@@ -21,8 +79,8 @@ keymap = [
 
 	{ on = "<C-u>", run = "arrow -50%",  desc = "Move cursor up half page" },
 	{ on = "<C-d>", run = "arrow 50%",   desc = "Move cursor down half page" },
-	{ on = "<C-k>", run = "arrow -100%", desc = "Move cursor up one page" },
-	{ on = "<C-j>", run = "arrow 100%",  desc = "Move cursor down one page" },
+	{ on = "<C-b>", run = "arrow -100%", desc = "Move cursor up one page" },
+	{ on = "<C-f>", run = "arrow 100%",  desc = "Move cursor down one page" },
 
 	{ on = "<S-PageUp>",   run = "arrow -50%",  desc = "Move cursor up half page" },
 	{ on = "<S-PageDown>", run = "arrow 50%",   desc = "Move cursor down half page" },
@@ -34,7 +92,7 @@ keymap = [
 
 	# Navigation
 	{ on = "h", run = "leave", desc = "Back to the parent directory" },
-	{ on = "l", run = "plugin smart-enter", desc = "Enter the child directory" },
+	{ on = "l", run = "enter", desc = "Enter the child directory" },
 
 	{ on = "<Left>",  run = "leave", desc = "Back to the parent directory" },
 	{ on = "<Right>", run = "enter", desc = "Enter the child directory" },
@@ -58,15 +116,10 @@ keymap = [
 	# Spotting
 	{ on = "<Tab>", run = "spot", desc = "Spot hovered file" },
 
-	# shell
-	{ on = "<C-g>", run = "shell --confirm --block lazygit", desc = "Lazygit" },
-	{ on = ";",     run = "shell --interactive",             desc = "Run a shell command" },
-	{ on = ":",     run = "shell --block --interactive",     desc = "Run a shell command (block until finishes)" },
-
 	# Operation
 	{ on = "o",         run = "open",                        desc = "Open selected files" },
 	{ on = "O",         run = "open --interactive",          desc = "Open selected files interactively" },
-	{ on = "<Enter>",   run = "plugin smart-enter",          desc = "Open selected files" },
+	{ on = "<Enter>",   run = "open",                        desc = "Open selected files" },
 	{ on = "<S-Enter>", run = "open --interactive",          desc = "Open selected files interactively" },
 	{ on = "y",         run = "yank",                        desc = "Yank selected files (copy)" },
 	{ on = "x",         run = "yank --cut",                  desc = "Yank selected files (cut)" },
@@ -81,11 +134,13 @@ keymap = [
 	{ on = "D",         run = "remove --permanently",        desc = "Permanently delete selected files" },
 	{ on = "a",         run = "create",                      desc = "Create a file (ends with / for directories)" },
 	{ on = "r",         run = "rename --cursor=before_ext",  desc = "Rename selected file(s)" },
+	{ on = ";",         run = "shell --interactive",         desc = "Run a shell command" },
+	{ on = ":",         run = "shell --block --interactive", desc = "Run a shell command (block until finishes)" },
 	{ on = ".",         run = "hidden toggle",               desc = "Toggle the visibility of hidden files" },
 	{ on = "s",         run = "search --via=fd",             desc = "Search files by name via fd" },
 	{ on = "S",         run = "search --via=rg",             desc = "Search files by content via ripgrep" },
 	{ on = "<C-s>",     run = "escape --search",             desc = "Cancel the ongoing search" },
-	{ on = "<C-f>",     run = "plugin fzf",                  desc = "Jump to a file/directory via fzf" },
+	{ on = "z",         run = "plugin fzf",                  desc = "Jump to a file/directory via fzf" },
 	{ on = "Z",         run = "plugin zoxide",               desc = "Jump to a directory via zoxide" },
 
 	# Linemode
@@ -106,8 +161,6 @@ keymap = [
 	{ on = "f", run = "filter --smart", desc = "Filter files" },
 
 	# Find
-    { on = "<C-p>", run = "plugin fzf", desc = "Jump to a directory or reveal a file using fzf" },
-    { on = "F", run = "search rg", desc = "Search files by content using ripgrep" },
 	{ on = "/", run = "find --smart",            desc = "Find next file" },
 	{ on = "?", run = "find --previous --smart", desc = "Find previous file" },
 	{ on = "n", run = "find_arrow",              desc = "Next found" },
