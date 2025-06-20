@@ -1,5 +1,3 @@
-#!/bin/zsh
-
 # Start configuration added by Zim install {{{
 #
 # This is not sourced during shell startup, and it's only used to configure the

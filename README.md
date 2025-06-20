@@ -7,11 +7,17 @@
 cd ~ && rm -rf .config && git clone https://github.com/Dwarven/.config.git
 ```
 
+### [oh-my-zsh](https://ohmyz.sh)
+```sh
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+ln -sfv .config/zsh/zshrc.ohmyz.sh ~/.zshrc
+```
+
 ### [ZIM:FW](https://zimfw.sh)
 ```sh
 curl -fsSL https://raw.githubusercontent.com/zimfw/install/master/install.zsh | zsh
-ln -sfv .config/zsh/zimrc ~/.zimrc
-ln -sfv .config/zsh/zshrc ~/.zshrc
+ln -sfv .config/zsh/zimrc.zimfw.sh ~/.zimrc
+ln -sfv .config/zsh/zshrc.zimfw.sh ~/.zshrc
 zimfw install
 ```
 
