@@ -21,6 +21,16 @@ ln -sfv .config/zsh/zshrc.zimfw.sh ~/.zshrc
 zimfw install
 ```
 
+### [Rectangle](https://rectangleapp.com)
+```sh
+brew install --cask rectangle
+```
+
+### [WezTerm](https://wezterm.org)
+```sh
+brew instyzall --cask wezterm
+```
+
 ### [lazygit](https://github.com/jesseduffield/lazygit)
 ```sh
 ln -sfv ~/.config/lazygit/config.yml ~/Library/Application\ Support/lazygit
@@ -28,7 +38,7 @@ ln -sfv ~/.config/lazygit/config.yml ~/Library/Application\ Support/lazygit
 
 ### [yazi](https://yazi-rs.github.io)
 ```sh
-brew install ouch nushell vlc ripgrep starship font-meslo-lg-nerd-font yazi
+brew install sevenzip ouch nushell vlc ripgrep starship font-meslo-lg-nerd-font yazi
 ```
 
 ### [iTerm2](https://iterm2.com)

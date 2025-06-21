@@ -133,8 +133,9 @@ function yz() {
   [ -n "$cwd" ] && [ "$cwd" != "$PWD" ] && builtin cd -- "$cwd"
   rm -f -- "$tmp"
 }
-bindkey -s "^Y" "yz^J"
+bindkey -M main  -s '^Y' 'yz^J'
 bindkey -M viins -s '^Y' 'yz^J'
+bindkey -M vicmd -s '^Y' 'iyz^J'
 
 #
 # Cleanup .DS_Store
@@ -155,8 +156,9 @@ alias tma="tmux attach-session"
 #
 # lazygit
 #
-bindkey -s "^G" "lazygit^J"
+bindkey -M main  -s '^G' 'lazygit^J'
 bindkey -M viins -s '^G' 'lazygit^J'
+bindkey -M vicmd -s '^G' 'ilazygit^J'
 
 #
 # edit-command-line
