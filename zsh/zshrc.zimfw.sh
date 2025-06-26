@@ -187,8 +187,9 @@ function yz() {
   [ -n "$cwd" ] && [ "$cwd" != "$PWD" ] && builtin cd -- "$cwd"
   rm -f -- "$tmp"
 }
-bindkey -s "^Y" "yz^J"
-bindkey -M viins -s '^Y' 'yz^J'
+bindkey -M main  -s '^Y' 'yz^J'
+bindkey -M viins -s '^Y' '\eddiyz^J'
+bindkey -M vicmd -s '^Y' 'ddiyz^J'
 
 #
 # Cleanup .DS_Store
@@ -209,8 +210,9 @@ alias tma="tmux attach-session"
 #
 # lazygit
 #
-bindkey -s "^G" "lazygit^J"
-bindkey -M viins -s '^G' 'lazygit^J'
+bindkey -M main  -s '^G' 'lazygit^J'
+bindkey -M viins -s '^G' '\eddilazygit^J'
+bindkey -M vicmd -s '^G' 'ddilazygit^J'
 
 #
 # edit-command-line
@@ -218,10 +220,10 @@ bindkey -M viins -s '^G' 'lazygit^J'
 # bindkey '^v' edit-command-line
 bindkey -v
 function zle-keymap-select {
-	if [[ ${KEYMAP} == vicmd ]] || [[ $1 = 'block' ]]; then
-		echo -ne '\e[1 q'
-	elif [[ ${KEYMAP} == main ]] || [[ ${KEYMAP} == viins ]] || [[ ${KEYMAP} = '' ]] || [[ $1 = 'beam' ]]; then
-		echo -ne '\e[5 q'
+  if [[ ${KEYMAP} == vicmd ]] || [[ $1 = 'block' ]]; then
+    echo -ne '\e[1 q'
+  elif [[ ${KEYMAP} == main ]] || [[ ${KEYMAP} == viins ]] || [[ ${KEYMAP} = '' ]] || [[ $1 = 'beam' ]]; then
+    echo -ne '\e[5 q'
   fi
 }
 zle -N zle-keymap-select
@@ -231,21 +233,50 @@ echo -ne '\e[5 q'
 
 # Use beam shape cursor for each new prompt.
 preexec() {
-	echo -ne '\e[5 q'
+  echo -ne '\e[5 q'
 }
 
 _fix_cursor() {
-	echo -ne '\e[5 q'
+  echo -ne '\e[5 q'
 }
 precmd_functions+=(_fix_cursor)
 
 KEYTIMEOUT=1
 
 bindkey -M viins '^A' beginning-of-line
+bindkey -M vicmd '^A' beginning-of-line
 bindkey -M viins '^E' end-of-line
+bindkey -M vicmd '^E' end-of-line
 
-bindkey -M viins "${terminfo[kcuu1]}" history-beginning-search-backward
-bindkey -M viins "${terminfo[kcud1]}" history-beginning-search-forward
+# Fix backspace and delete keys in vi insert mode
+bindkey -M viins '^?' backward-delete-char     # Backspace
+bindkey -M viins '^H' backward-delete-char     # Ctrl+H
+bindkey -M viins '^[[3~' delete-char           # Delete key
+bindkey -M viins '^[[P' delete-char            # Delete key (alternative)
+
+# using terminfo definitions (more reliable)
+if [[ -n "${terminfo[kbs]}" ]]; then
+  bindkey -M viins "${terminfo[kbs]}" backward-delete-char
+fi
+if [[ -n "${terminfo[kdch1]}" ]]; then
+  bindkey -M viins "${terminfo[kdch1]}" delete-char
+fi
+
+# Bind arrow keys to search history by substring
+bindkey -M viins '^[[A' history-substring-search-up
+bindkey -M vicmd '^[[A' history-substring-search-up
+bindkey -M viins '^[[B' history-substring-search-down
+bindkey -M vicmd '^[[B' history-substring-search-down
+
+# using terminfo definitions (more reliable)
+if [[ -n "${terminfo[kcuu1]}" ]]; then
+  bindkey -M viins "${terminfo[kcuu1]}" history-substring-search-up
+  bindkey -M vicmd "${terminfo[kcuu1]}" history-substring-search-up
+fi
+if [[ -n "${terminfo[kcud1]}" ]]; then
+  bindkey -M viins "${terminfo[kcud1]}" history-substring-search-down
+  bindkey -M vicmd "${terminfo[kcud1]}" history-substring-search-down
+fi
 
 #
 # brew
@@ -269,6 +300,8 @@ export FZF_TMUX=1
 export FZF_TMUX_HEIGHT='80%'
 export FZF_PREVIEW_COMMAND='[[ $(file --mime {}) =~ binary ]] && echo {} is a binary file || (ccat --color=always {} || highlight -O ansi -l {} || cat {}) 2> /dev/null | head -500'
 [ -f ~/.config/zsh/fzf.zsh ] && source ~/.config/zsh/fzf.zsh
+
+[ -f ~/.zim/modules/zfm/zfm.zsh ] && source ~/.zim/modules/zfm/zfm.zsh
 
 [ "$(uname)" = "Linux" ] && [ -f /etc/zsh_command_not_found ] && source /etc/zsh_command_not_found
 

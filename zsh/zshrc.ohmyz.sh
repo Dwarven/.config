@@ -133,8 +133,9 @@ function yz() {
   [ -n "$cwd" ] && [ "$cwd" != "$PWD" ] && builtin cd -- "$cwd"
   rm -f -- "$tmp"
 }
-bindkey -s "^Y" "yz^J"
-bindkey -M viins -s '^Y' 'yz^J'
+bindkey -M main  -s '^Y' 'yz^J'
+bindkey -M viins -s '^Y' '\eddiyz^J'
+bindkey -M vicmd -s '^Y' 'ddiyz^J'
 
 #
 # Cleanup .DS_Store
@@ -155,8 +156,9 @@ alias tma="tmux attach-session"
 #
 # lazygit
 #
-bindkey -s "^G" "lazygit^J"
-bindkey -M viins -s '^G' 'lazygit^J'
+bindkey -M main  -s '^G' 'lazygit^J'
+bindkey -M viins -s '^G' '\eddilazygit^J'
+bindkey -M vicmd -s '^G' 'ddilazygit^J'
 
 #
 # edit-command-line
@@ -188,10 +190,13 @@ precmd_functions+=(_fix_cursor)
 KEYTIMEOUT=1
 
 bindkey -M viins '^A' beginning-of-line
+bindkey -M vicmd '^A' beginning-of-line
 bindkey -M viins '^E' end-of-line
+bindkey -M vicmd '^E' end-of-line
 
-bindkey -M viins "${terminfo[kcuu1]}" history-beginning-search-backward
-bindkey -M viins "${terminfo[kcud1]}" history-beginning-search-forward
+# Bind k/j keys to search history by prefix in vi normal mode
+bindkey -M vicmd 'k' up-line-or-beginning-search
+bindkey -M vicmd 'j' down-line-or-beginning-search
 
 #
 # brew

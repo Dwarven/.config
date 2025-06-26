@@ -62,8 +62,6 @@ play = [
 
 [open]
 rules = [
-	# Xcode
-	{ name = "*.{xcodeproj,xcworkspace}/", use = [ "open", "reveal" ] },
 	# Folder
 	{ name = "*/", use = [ "open", "edit", "reveal" ] },
 	# Text

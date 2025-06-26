@@ -24,6 +24,7 @@ prepend_keymap = [
 	# Operation
 	{ on = [ "C" ],      run = "plugin ouch",                     desc = "Compress with ouch" },
 	{ on = [ "c", "w" ], run = "rename --cursor=before_ext",      desc = "Rename selected file(s)" },
+	{ on = [ "p", "p" ], run = "paste",                           desc = "Paste yanked files" },
 	{ on = "M",          run = "shell --interactive 'mkdir '",    desc = "Create a directory" },
 	{ on = "<C-f>",      run = "plugin fzf",                      desc = "Jump to a file/directory via fzf" },
 	{ on = "<C-g>",      run = "shell --confirm --block lazygit", desc = "Lazygit" },
@@ -60,6 +61,13 @@ prepend_keymap = [
 	{ on = ["R", "a"],       run = "plugin sudo -- create",               desc = "sudo create" },             # touch/mkdir
 	{ on = ["R", "d"],       run = "plugin sudo -- remove",               desc = "sudo trash" },              # trash
 	{ on = ["R", "D"],       run = "plugin sudo -- remove --permanently", desc = "sudo delete" },             # delete
+
+	# CocoaPods
+	{ on = ["p", "i"], run = "shell --block 'pod install --verbose'", desc = "pod install --verbose" },
+
+	# Xcode
+	{ on = ["o", "w"], run = "shell --block 'open *.xcworkspace'",    desc = "open *.xcworkspace" },
+	{ on = ["o", "p"], run = "shell --block 'open *.xcodeproj'",      desc = "open *.xcodeproj" },
 ]
 
 keymap = [
@@ -283,6 +291,9 @@ keymap = [
 ]
 
 [input]
+prepend_keymap = [
+	{ on = "<Esc>",   run = "close",          desc = "Cancel input" },
+]
 
 keymap = [
 	{ on = "<C-c>",   run = "close",          desc = "Cancel input" },

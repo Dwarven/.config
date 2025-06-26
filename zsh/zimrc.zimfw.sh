@@ -56,3 +56,6 @@ zmodule zsh-users/zsh-autosuggestions
 
 # Replace zsh's default completion selection menu with fzf!
 zmodule Aloxaf/fzf-tab
+
+# Zsh Fuzzy Marks
+zmodule pabloariasal/zfm
