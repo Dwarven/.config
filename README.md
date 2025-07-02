@@ -48,6 +48,12 @@ brew install --cask wezterm
 brew install --cask rectangle
 ```
 
+### [Sublime Text](https://www.sublimetext.com)
+
+```sh
+ln -sfv ~/.config/Sublime\ Text/Packages/User/Preferences.sublime-settings ~/Library/Application\ Support/Sublime\ Text/Packages/User
+```
+
 ### [OpenInTerminal-Lite、OpenInEditor-Lite](https://github.com/Ji4n1ng/OpenInTerminal)
 ```sh
 brew install --cask openinterminal-lite openineditor-lite

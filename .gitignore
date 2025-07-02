@@ -21,6 +21,7 @@
 !/alacritty/
 !/Wallpapers/
 !/.Xmodmap
+!/Sublime Text/
 !/zsh/
 !/.bash_profile
 !/git-completion.bash
