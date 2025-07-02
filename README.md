@@ -47,3 +47,28 @@ brew install --cask wezterm
 ```sh
 brew install --cask rectangle
 ```
+
+### [OpenInTerminal-Lite、OpenInEditor-Lite](https://github.com/Ji4n1ng/OpenInTerminal)
+```sh
+brew install --cask openinterminal-lite openineditor-lite
+```
+
+##### OpenInTerminal-Lite
+- switch to [Terminal](https://support.apple.com/guide/terminal)
+```sh
+defaults write wang.jianing.app.OpenInTerminal-Lite LiteDefaultTerminal Terminal
+```
+- switch to [iTerm2](https://iterm2.com)
+```sh
+defaults write wang.jianing.app.OpenInTerminal-Lite LiteDefaultTerminal iTerm
+```
+
+##### OpenInEditor-Lite
+- switch to [Sublime Text](https://www.sublimetext.com)
+```sh
+defaults write wang.jianing.app.OpenInEditor-Lite LiteDefaultEditor Sublime\ Text
+```
+- switch to [Visual Studio Code](https://code.visualstudio.com)
+```sh
+defaults write wang.jianing.app.OpenInEditor-Lite LiteDefaultEditor Visual\ Studio\ Code
+```
