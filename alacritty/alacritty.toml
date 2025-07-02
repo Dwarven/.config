@@ -1,3 +1,4 @@
+[general]
 live_config_reload = true
 working_directory = "None"
 
@@ -5,14 +6,18 @@ working_directory = "None"
 draw_bold_text_with_bright_colors = true
 
 [colors.bright]
-black = "0x709080"
-blue = "0x94bff3"
-cyan = "0x93e0e3"
-green = "0x72d5a3"
-magenta = "0xec93d3"
-red = "0xdca3a3"
-white = "0xffffff"
-yellow = "0xf0dfaf"
+black = '#6272a4'
+blue = '#d6acff'
+cyan = '#a4ffff'
+green = '#69ff94'
+magenta = '#ff92df'
+red = '#ff6e6e'
+white = '#ffffff'
+yellow = '#ffffa5'
+
+[colors.cursor]
+cursor = '#f8f8f2'
+text = '#282a36'
 
 [colors.normal]
 black = "0x3f3f3f"
@@ -25,8 +30,12 @@ white = "0xdcdcdc"
 yellow = "0xdfaf8f"
 
 [colors.primary]
-background = "0x2c2c2c"
-foreground = "0xdcdcdc"
+background = '#282a36'
+foreground = '#f8f8f2'
+
+[colors.selection]
+background = '#44475a'
+text = '#ffffff'
 
 [cursor]
 style = "Block"
@@ -39,6 +48,10 @@ print_events = false
 render_timer = false
 
 [font]
+normal = { family = "MesloLGS Nerd Font", style = "Regular" }
+bold = { family = "MesloLGS Nerd Font", style = "Bold" }
+italic = { family = "MesloLGS Nerd Font", style = "Italic" }
+bold_italic = { family = "MesloLGS Nerd Font", style = "Bold Italic" }
 size = 14.0
 
 [font.glyph_offset]
