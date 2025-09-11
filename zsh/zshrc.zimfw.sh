@@ -199,7 +199,7 @@ alias cleanup_ds_store="find . -name .DS_Store -print0 | xargs -0 rm -rf"
 #
 # make zip
 #
-alias make_zip='cleanup_ds_store && zip -r "${PWD##*/}".zip ./'
+alias make_zip='cleanup_ds_store && zip -r -y "${PWD##*/}".zip ./'
 
 #
 # tmux
