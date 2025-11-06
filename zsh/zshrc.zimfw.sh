@@ -142,14 +142,14 @@ if (( ${+functions[git-info]} )); then
   zstyle ':zim:git-info:ahead' format ' %F{11}⬆'
   zstyle ':zim:git-info:behind' format ' %F{10}⬇'
   zstyle ':zim:git-info:branch' format ' %F{12}git:(%F{9}%b%F{12})'
-  zstyle ':zim:git-info:commit' format ' %F{3}%c'
+  zstyle ':zim:git-info:commit' format ' %F{12}git:(%F{3}%c%F{12})'
   zstyle ':zim:git-info:indexed' format ' %F{2}+'
   zstyle ':zim:git-info:unindexed' format ' %F{4}!'
   zstyle ':zim:git-info:position' format ' %F{5}%p'
   zstyle ':zim:git-info:stashed' format ' %F{6}\$'
   zstyle ':zim:git-info:untracked' format ' %F{11}?'
   zstyle ':zim:git-info:keys' format \
-    'rprompt' '%b$(coalesce %p %c)%s%A%B%S%i%I%u'
+    'rprompt' '%b%c$(coalesce %p)%s%A%B%S%i%I%u'
 
   # Add hook for calling git-info before each command.
   autoload -Uz add-zsh-hook && add-zsh-hook precmd git-info
