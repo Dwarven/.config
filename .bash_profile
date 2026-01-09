@@ -35,6 +35,23 @@ export PS1='\[\033[01;33m\]➜ \[\033[01;96m\] \W$(__git_ps1 " \[\033[01;34m\]gi
 # grep
 alias grep="grep --color=always"
 
+#
+# path
+#
+if [ "$(uname)"=="Darwin" ]; then
+  export PATH="/Applications/Sublime Text.app/Contents/SharedSupport/bin:$PATH"
+  if [ "$(uname -m)"=="arm64" ] && [ "$(which brew)"=="brew not found" ]; then
+    export PATH="$PATH:/opt/homebrew/bin"
+  fi
+fi
+
+#
+# alias
+#
+if command -v nvim >/dev/null 2>&1; then
+    alias vim='nvim'
+    export EDITOR='nvim'
+fi
 alias vi="vim"
 alias l="ls -CF"
 alias la="ls -A"
@@ -74,13 +91,6 @@ alias make_zip='cleanup_ds_store && zip -r -y "${PWD##*/}".zip ./'
 #
 alias tmn="tmux new -s"
 alias tma="tmux attach-session"
-
-if [ "$(uname)"=="Darwin" ]; then
-  export PATH="/Applications/Sublime Text.app/Contents/SharedSupport/bin:$PATH"
-  if [ "$(uname -m)"=="arm64" ] && [ "$(which brew)"=="brew not found" ]; then
-    export PATH="$PATH:/opt/homebrew/bin"
-  fi
-fi
 
 #
 # Git Functions
