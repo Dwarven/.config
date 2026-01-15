@@ -70,6 +70,11 @@ alias cleanup_ds_store="find . -name .DS_Store -print0 | xargs -0 rm -rf"
 alias make_zip='cleanup_ds_store && zip -r -y "${PWD##*/}".zip ./'
 
 #
+# make tar xz
+#
+alias make_tar_xz='cleanup_ds_store && tar cvfJ "${PWD##*/}".tar.xz *'
+
+#
 # tmux
 #
 alias tmn="tmux new -s"
