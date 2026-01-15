@@ -32,3 +32,5 @@
 !/switchy.bak
 !/iTerm2_Preferences/
 !/karabiner/karabiner.json
+!/nvim/
+/nvim/.tmp

@@ -160,7 +160,23 @@ unset RPS1
 # Aloxaf/fzf-tab
 zstyle ':fzf-tab:*' fzf-flags -i
 
+#
+# path
+#
+if [ "$(uname)" = "Darwin" ]; then
+  export PATH="/Applications/Sublime Text.app/Contents/SharedSupport/bin:$PATH"
+  if [ "$(which brew)" = "brew not found" ] && [ "$(uname -m)" = "arm64" ]; then
+    export PATH="$PATH:/opt/homebrew/bin"
+  fi
+fi
+
+#
 # alias
+#
+if command -v nvim &>/dev/null; then
+  alias vim='nvim'
+  export EDITOR='nvim'
+fi
 alias vi="vim"
 alias ll="ls -alF"
 alias llh="ls -alFh"
@@ -281,16 +297,6 @@ fi
 if [[ -n "${terminfo[kcud1]}" ]]; then
   bindkey -M viins "${terminfo[kcud1]}" history-substring-search-down
   bindkey -M vicmd "${terminfo[kcud1]}" history-substring-search-down
-fi
-
-#
-# brew
-#
-if [ "$(uname)" = "Darwin" ]; then
-  export PATH="/Applications/Sublime Text.app/Contents/SharedSupport/bin:$PATH"
-  if [ "$(which brew)" = "brew not found" ] && [ "$(uname -m)" = "arm64" ]; then
-    export PATH="$PATH:/opt/homebrew/bin"
-  fi
 fi
 
 #

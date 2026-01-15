@@ -97,6 +97,24 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+
+#
+# path
+#
+if [ "$(uname)" = "Darwin" ]; then
+  export PATH="/Applications/Sublime Text.app/Contents/SharedSupport/bin:$PATH"
+  if [ "$(which brew)" = "brew not found" ] && [ "$(uname -m)" = "arm64" ]; then
+    export PATH="$PATH:/opt/homebrew/bin"
+  fi
+fi
+
+#
+# alias
+#
+if command -v nvim &>/dev/null; then
+  alias vim='nvim'
+  export EDITOR='nvim'
+fi
 alias vi="vim"
 alias ll="ls -alF"
 alias llh="ls -alFh"
@@ -202,16 +220,6 @@ bindkey -M vicmd '^E' end-of-line
 # Bind k/j keys to search history by prefix in vi normal mode
 bindkey -M vicmd 'k' up-line-or-beginning-search
 bindkey -M vicmd 'j' down-line-or-beginning-search
-
-#
-# brew
-#
-if [ "$(uname)" = "Darwin" ]; then
-  export PATH="/Applications/Sublime Text.app/Contents/SharedSupport/bin:$PATH"
-  if [ "$(which brew)" = "brew not found" ] && [ "$(uname -m)" = "arm64" ]; then
-    export PATH="$PATH:/opt/homebrew/bin"
-  fi
-fi
 
 #
 # fzf
