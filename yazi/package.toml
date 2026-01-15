@@ -1,29 +1,39 @@
 [[plugin.deps]]
 use = "yazi-rs/plugins:git"
-rev = "86d28e4"
-hash = "e01006bfb38951ea89031bd918b20dbb"
+rev = "75f6f72"
+hash = "36a484acf6a0a0219c543ccb4cee218f"
 
 [[plugin.deps]]
 use = "yazi-rs/plugins:smart-enter"
-rev = "86d28e4"
+rev = "75f6f72"
 hash = "56fdabc96fc1f4d53c96eb884b02a5be"
 
 [[plugin.deps]]
 use = "Rolv-Apneseth/starship"
-rev = "6a0f3f7"
-hash = "d5a74d95c2e8194ac352c5e10e81e64f"
+rev = "eca1861"
+hash = "e519d894e94ded741e06aae4d4775981"
 
 [[plugin.deps]]
 use = "yazi-rs/plugins:diff"
-rev = "86d28e4"
-hash = "47865a70cade14a0b9b6bc6a54f16bdb"
+rev = "75f6f72"
+hash = "492e4757f332e29f982556bf507e043c"
 
 [[plugin.deps]]
 use = "ndtoan96/ouch"
-rev = "1ee69a5"
-hash = "63679f3daf8551ff8755be38b5ced0f"
+rev = "594b8a2"
+hash = "c9e628fc0312d198db22ae2fa74883b"
+
+[[plugin.deps]]
+use = "stelcodes/bunny"
+rev = "6ee99bc"
+hash = "417de633d0008580b386bd3358eea56f"
+
+[[plugin.deps]]
+use = "ciarandg/cd-git-root"
+rev = "a0e0f4b"
+hash = "b84a85f3b513bd9c0a0ab93cc7c8e4c3"
 
 [[flavor.deps]]
 use = "yazi-rs/flavors:dracula"
-rev = "d04a298"
-hash = "7b9ff01a0070cc9176e0c683329aeb26"
+rev = "4a1802a"
+hash = "7a870f143a4026a893ea3123be711e7a"

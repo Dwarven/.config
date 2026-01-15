@@ -17,3 +17,24 @@ Status:children_add(function()
 	}
 end, 500, Status.RIGHT)
 
+require("bunny"):setup({
+  hops = (function()
+    local hops = {}
+    -- ~/.machine_bunny.lua
+    -- return {
+    --   { key = "w", path = "~/work", desc = "Work" },
+    --   { key = "p", path = "~/projects", desc = "Projects" },
+    -- }
+    local machine_path = os.getenv("HOME") .. "/.machine_bunny.lua"
+    local ok, extra = pcall(dofile, machine_path)
+    if ok and type(extra) == "table" then
+      hops = extra
+    end
+    return hops
+  end)(),
+  desc_strategy = "path", -- If desc isn't present, use "path" or "filename", default is "path"
+  ephemeral = true, -- Enable ephemeral hops, default is true
+  tabs = true, -- Enable tab hops, default is true
+  notify = false, -- Notify after hopping, default is false
+  fuzzy_cmd = "fzf", -- Fuzzy searching command, default is "fzf"
+})
