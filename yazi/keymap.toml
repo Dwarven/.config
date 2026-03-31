@@ -22,6 +22,7 @@ prepend_keymap = [
 	# Operation
 	{ on = [ "C" ],      run = "plugin ouch",                     desc = "Compress with ouch" },
 	{ on = [ "c", "w" ], run = "rename --cursor=before_ext",      desc = "Rename selected file(s)" },
+	{ on = [ "c", "m" ], run = "plugin chmod",                    desc = "Chmod on selected files" },
 	{ on = [ "p", "p" ], run = "paste",                           desc = "Paste yanked files" },
 	{ on = "M",          run = "shell --interactive 'mkdir '",    desc = "Create a directory" },
 	{ on = "<C-f>",      run = "plugin fzf",                      desc = "Jump to a file/directory via fzf" },
