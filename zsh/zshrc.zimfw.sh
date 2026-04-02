@@ -312,7 +312,12 @@ export FZF_TMUX_HEIGHT='80%'
 export FZF_PREVIEW_COMMAND='[[ $(file --mime {}) =~ binary ]] && echo {} is a binary file || (ccat --color=always {} || highlight -O ansi -l {} || cat {}) 2> /dev/null | head -500'
 [ -f ~/.config/zsh/fzf.zsh ] && source ~/.config/zsh/fzf.zsh
 
-[ -f ~/.zim/modules/zfm/zfm.zsh ] && source ~/.zim/modules/zfm/zfm.zsh
+_zshrc_precmd() {
+  [ -f ~/.zim/modules/zfm/zfm.zsh ] && source ~/.zim/modules/zfm/zfm.zsh
+  precmd_functions=(${precmd_functions:#_zshrc_precmd})
+  unfunction _zshrc_precmd
+}
+autoload -Uz add-zsh-hook && add-zsh-hook precmd _zshrc_precmd
 
 [ "$(uname)" = "Linux" ] && [ -f /etc/zsh_command_not_found ] && source /etc/zsh_command_not_found
 
