@@ -78,3 +78,10 @@ defaults write wang.jianing.app.OpenInEditor-Lite LiteDefaultEditor Sublime\ Tex
 ```sh
 defaults write wang.jianing.app.OpenInEditor-Lite LiteDefaultEditor Visual\ Studio\ Code
 ```
+
+### [Claude Code](https://claude.com/product/claude-code)
+
+```sh
+brew install --cask claude-code
+rm -rf ~/.claude && ln -sv .config/claude ~/.claude
+```

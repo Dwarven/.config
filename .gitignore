@@ -34,3 +34,10 @@
 !/karabiner/karabiner.json
 !/nvim/
 /nvim/.tmp
+!/claude/
+/claude/*
+!/claude/settings.json
+!/claude/CLAUDE.md
+!/claude/scripts/
+!/claude/commands/
+!/claude/agents/
