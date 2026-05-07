@@ -1,3 +1,14 @@
+# Auto-attach tmux when:
+# AUTO_ATTACH_TMUX=on
+# not in tmux
+# cwd is HOME
+# tmux on PATH
+[ "$AUTO_ATTACH_TMUX" = "on" ] && [ -z "$TMUX" ] && [ "$PWD" = "$HOME" ] && (( $+commands[tmux] )) \
+  && () {
+    [[ -z "$1" ]] && exec tmux new-session;
+    [[ "$1" != *[1-9]* ]] && exec tmux attach -d;
+  } "$(tmux list-sessions -F '#{session_attached}' 2>/dev/null)"
+
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
