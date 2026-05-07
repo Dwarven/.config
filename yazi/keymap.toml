@@ -3,90 +3,90 @@
 [mgr]
 
 prepend_keymap = [
-	# Hopping
-	{ on = "<C-d>", run = "plugin diff", desc = "Diff the selected with the hovered file" },
-	{ on = "<C-k>", run = "arrow -50%",  desc = "Move cursor up half page" },
-	{ on = "<C-j>", run = "arrow 50%",   desc = "Move cursor down half page" },
+  # Hopping
+  { on = "<C-d>", run = "plugin diff", desc = "Diff the selected with the hovered file" },
+  { on = "<C-k>", run = "arrow -50%",  desc = "Move cursor up half page" },
+  { on = "<C-j>", run = "arrow 50%",   desc = "Move cursor down half page" },
 
-	# Navigation
-	{ on = "l", run = "plugin smart-enter", desc = "Enter the child directory" },
+  # Navigation
+  { on = "l", run = "plugin smart-enter", desc = "Enter the child directory" },
 
-	# Toggle
+  # Toggle
 
-	# Visual mode
+  # Visual mode
 
-	# Seeking
+  # Seeking
 
-	# Spotting
+  # Spotting
 
-	# Operation
-	{ on = [ "C" ],      run = "plugin ouch",                     desc = "Compress with ouch" },
-	{ on = [ "c", "w" ], run = "rename --cursor=before_ext",      desc = "Rename selected file(s)" },
-	{ on = [ "c", "m" ], run = "plugin chmod",                    desc = "Chmod on selected files" },
-	{ on = [ "p", "p" ], run = "paste",                           desc = "Paste yanked files" },
-	{ on = "M",          run = "shell --interactive 'mkdir '",    desc = "Create a directory" },
-	{ on = "<C-f>",      run = "plugin fzf",                      desc = "Jump to a file/directory via fzf" },
-	{ on = "<C-g>",      run = "shell --confirm --block lazygit", desc = "Lazygit" },
+  # Operation
+  { on = [ "C" ],      run = "plugin ouch",                     desc = "Compress with ouch" },
+  { on = [ "c", "w" ], run = "rename --cursor=before_ext",      desc = "Rename selected file(s)" },
+  { on = [ "c", "m" ], run = "plugin chmod",                    desc = "Chmod on selected files" },
+  { on = [ "p", "p" ], run = "paste",                           desc = "Paste yanked files" },
+  { on = "M",          run = "shell --interactive 'mkdir '",    desc = "Create a directory" },
+  { on = "<C-f>",      run = "plugin fzf",                      desc = "Jump to a file/directory via fzf" },
+  { on = "<C-g>",      run = "shell --confirm --block lazygit", desc = "Lazygit" },
 
-	# Linemode
+  # Linemode
 
-	# Copy
+  # Copy
 
-	# Filter
+  # Filter
 
-	# ciarandg/cd-git-root
-    { on = [ "g", "r" ], run = "plugin cd-git-root", desc = "Go to git repo root" },
+  # ciarandg/cd-git-root
+  { on = [ "g", "r" ], run = "plugin cd-git-root", desc = "Go to git repo root" },
 
-	# stelcodes/bunny
-    { on = "<C-h>", run = "plugin bunny", desc = "Start bunny.yazi" },
-    { on = "<C-p>", run = "plugin bunny fuzzy", desc = "Start bunny.yazi fuzzy search" },
+  # stelcodes/bunny
+  { on = "<C-h>", run = "plugin bunny", desc = "Start bunny.yazi" },
+  { on = "<C-p>", run = "plugin bunny fuzzy", desc = "Start bunny.yazi fuzzy search" },
 
-	# Find
-    { on = "F", run = "search rg", desc = "Search files by content using ripgrep" },
+  # Find
+  { on = "F", run = "search rg", desc = "Search files by content using ripgrep" },
 
-	# Sorting
+  # Sorting
 
-	# Goto
-	{ on = [ "g", "/" ],        run = "cd /",                           desc = "Go /" },
-    { on = [ "g", "d", "o" ],   run = "cd ~/Documents",                 desc = "Go ~/Documents" },
-    { on = [ "g", "d", "l" ],   run = "cd ~/Downloads",                 desc = "Go ~/Downloads" },
-    { on = [ "g", "d", "e" ],   run = "cd ~/Desktop",                   desc = "Go ~/Desktop" },
-	{ on = [ "g", "e" ],        run = "cd /etc",                        desc = "Go /etc" },
-	{ on = [ "g", "t" ],        run = "cd /tmp",                        desc = "Go /tmp" },
-	{ on = [ "g", "u", "l" ],   run = "cd /usr/local",                  desc = "Go /usr/local" },
-	{ on = [ "g", "l", "s" ],   run = "cd ~/.local/share",              desc = "Go ~/.local/share" },
-	{ on = [ "g", "l", "b" ],   run = "cd ~/.local/bin",                desc = "Go ~/.local/bin" },
-	{ on = [ "g", "l", "t" ],   run = "cd ~/.local/state",              desc = "Go ~/.local/state" },
-	{ on = [ "g", "x" ],        run = "cd ~/Library/Developer/Xcode",   desc = "Go ~/Library/Developer/Xcode" },
+  # Goto
+  { on = [ "g", "/" ],        run = "cd /",                           desc = "Go /" },
+  { on = [ "g", "d", "o" ],   run = "cd ~/Documents",                 desc = "Go ~/Documents" },
+  { on = [ "g", "d", "l" ],   run = "cd ~/Downloads",                 desc = "Go ~/Downloads" },
+  { on = [ "g", "d", "e" ],   run = "cd ~/Desktop",                   desc = "Go ~/Desktop" },
+  { on = [ "g", "e" ],        run = "cd /etc",                        desc = "Go /etc" },
+  { on = [ "g", "t" ],        run = "cd /tmp",                        desc = "Go /tmp" },
+  { on = [ "g", "u", "l" ],   run = "cd /usr/local",                  desc = "Go /usr/local" },
+  { on = [ "g", "l", "s" ],   run = "cd ~/.local/share",              desc = "Go ~/.local/share" },
+  { on = [ "g", "l", "b" ],   run = "cd ~/.local/bin",                desc = "Go ~/.local/bin" },
+  { on = [ "g", "l", "t" ],   run = "cd ~/.local/state",              desc = "Go ~/.local/state" },
+  { on = [ "g", "x" ],        run = "cd ~/Library/Developer/Xcode",   desc = "Go ~/Library/Developer/Xcode" },
 
-	# Tabs
+  # Tabs
 
-	# Tasks
+  # Tasks
 
-	# Help
+  # Help
 
-	# TD-Sky/sudo
-	{ on = ["R", "p", "p"],  run = "plugin sudo -- paste",                desc = "sudo paste" },              # cp/mv
-	{ on = ["R", "P"],       run = "plugin sudo -- paste --force",        desc = "sudo paste" },              # cp/mv --force
-	{ on = ["R", "r"],       run = "plugin sudo -- rename",               desc = "sudo rename" },             # mv
-	{ on = ["R", "p", "l"],  run = "plugin sudo -- link",                 desc = "sudo link" },               # ln -s (absolute-path)
-	{ on = ["R", "p", "r"],  run = "plugin sudo -- link --relative",      desc = "sudo link relative path" }, # ln -s (relative-path)
-	{ on = ["R", "p", "L"],  run = "plugin sudo -- hardlink",             desc = "sudo hardlink" },           # ln
-	{ on = ["R", "a"],       run = "plugin sudo -- create",               desc = "sudo create" },             # touch/mkdir
-	{ on = ["R", "d"],       run = "plugin sudo -- remove",               desc = "sudo trash" },              # trash
-	{ on = ["R", "D"],       run = "plugin sudo -- remove --permanently", desc = "sudo delete" },             # delete
+  # TD-Sky/sudo
+  { on = ["R", "p", "p"],  run = "plugin sudo -- paste",                desc = "sudo paste" },              # cp/mv
+  { on = ["R", "P"],       run = "plugin sudo -- paste --force",        desc = "sudo paste" },              # cp/mv --force
+  { on = ["R", "r"],       run = "plugin sudo -- rename",               desc = "sudo rename" },             # mv
+  { on = ["R", "p", "l"],  run = "plugin sudo -- link",                 desc = "sudo link" },               # ln -s (absolute-path)
+  { on = ["R", "p", "r"],  run = "plugin sudo -- link --relative",      desc = "sudo link relative path" }, # ln -s (relative-path)
+  { on = ["R", "p", "L"],  run = "plugin sudo -- hardlink",             desc = "sudo hardlink" },           # ln
+  { on = ["R", "a"],       run = "plugin sudo -- create",               desc = "sudo create" },             # touch/mkdir
+  { on = ["R", "d"],       run = "plugin sudo -- remove",               desc = "sudo trash" },              # trash
+  { on = ["R", "D"],       run = "plugin sudo -- remove --permanently", desc = "sudo delete" },             # delete
 
-	# CocoaPods
-	{ on = ["p", "i"], run = "shell --block 'pod install --verbose'", desc = "pod install --verbose" },
+  # CocoaPods
+  { on = ["p", "i"], run = "shell --block 'pod install --verbose'", desc = "pod install --verbose" },
 
-	# Editor
-	{ on = ["o", "s"], run = "shell --block 'subl %s'",               desc = "open with sublime text" },
-	{ on = ["o", "w"], run = "shell --block 'open *.xcworkspace'",    desc = "open *.xcworkspace" },
-	{ on = ["o", "p"], run = "shell --block 'open *.xcodeproj'",      desc = "open *.xcodeproj" },
+  # Editor
+  { on = ["o", "s"], run = "shell --block 'subl %s'",               desc = "open with sublime text" },
+  { on = ["o", "w"], run = "shell --block 'open *.xcworkspace'",    desc = "open *.xcworkspace" },
+  { on = ["o", "p"], run = "shell --block 'open *.xcodeproj'",      desc = "open *.xcodeproj" },
 ]
 
 [input]
 
 prepend_keymap = [
-	{ on = "<Esc>",   run = "close",          desc = "Cancel input" },
+  { on = "<Esc>",   run = "close",          desc = "Cancel input" },
 ]

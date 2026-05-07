@@ -1,0 +1,335 @@
+/* === light mode variables (default) === */
+:root {
+  --bg-color: var(--vscode-editor-background, rgb(250, 250, 252));
+  --bg-color2: rgb(236, 236, 238);
+
+  --text-color: #000;
+  --text-grey: #666;
+  --text-code: #2f479f;
+  --title-color: #070909;
+  --border-color: #d2d2d2;
+
+  --color-1: #3e69d7;
+  --color-1-0-a: rgba(62, 105, 215, 0.15);
+  --color-1-0-b: rgba(62, 105, 215, 0.06);
+
+  --color-2: #f59102;
+  --color-2-0-a: rgba(245, 145, 2, 0.15);
+  --color-2-0-b: rgba(245, 145, 2, 0.06);
+  --color-2-0-c: rgba(245, 145, 2, 0.3);
+
+  --color-3: #03b736;
+  --color-3-0-a: rgba(3, 183, 54, 0.15);
+  --color-3-0-b: rgba(3, 183, 54, 0.06);
+
+  --color-4: #8250df;
+  --color-4-0-a: rgba(130, 80, 223, 0.15);
+  --color-4-0-b: rgba(130, 80, 223, 0.06);
+
+  --color-5: #e30f2e;
+  --color-5-0-a: rgba(227, 15, 46, 0.15);
+  --color-5-0-b: rgba(227, 15, 46, 0.06);
+
+  --monospace: "JetBrains Mono", "Source Code Pro", "Fira Code", Consolas, Inconsolata, "Cascadia Code", Monaco, "Ubuntu Mono", monospace;
+}
+
+/* === dark mode variable overrides === */
+.vscode-dark {
+  --bg-color: var(--vscode-editor-background, #1b1b1f);
+  --bg-color2: rgb(40, 42, 50);
+
+  --text-color: #d0d0d0;
+  --text-grey: #464b50;
+  --text-code: #bbc7fd;
+  --title-color: var(--text-color);
+  --border-color: var(--text-grey);
+
+  --color-1-0-a: rgba(62, 105, 215, 0.3);
+  --color-1-0-b: rgba(62, 105, 215, 0.12);
+
+  --color-2-0-a: rgba(245, 145, 2, 0.3);
+  --color-2-0-b: rgba(245, 145, 2, 0.12);
+  --color-2-0-c: rgba(245, 145, 2, 0.4);
+
+  --color-3-0-a: rgba(3, 183, 54, 0.3);
+  --color-3-0-b: rgba(3, 183, 54, 0.12);
+
+  --color-4-0-a: rgba(130, 80, 223, 0.3);
+  --color-4-0-b: rgba(130, 80, 223, 0.12);
+
+  --color-5-0-a: rgba(227, 15, 46, 0.3);
+  --color-5-0-b: rgba(227, 15, 46, 0.12);
+}
+
+/* === base === */
+html {
+  font-size: 16px;
+  color: var(--text-color);
+  -webkit-font-smoothing: antialiased;
+}
+body {
+  margin: 0;
+  padding: 1em 26px;
+  font-size: 16px;
+  line-height: 1.6;
+  letter-spacing: 0.6px;
+  font-family: "PingFang SC", "Microsoft YaHei UI", "Microsoft YaHei", Arial, "Helvetica Neue", Helvetica, sans-serif, "Hack Nerd Font";
+  color: var(--text-color);
+  word-wrap: break-word;
+}
+
+/* === headings === */
+h1, h2, h3, h4, h5, h6 {
+  position: relative;
+  line-height: 1.5;
+  margin: 32px 0 18px;
+  color: var(--title-color);
+  letter-spacing: 2px;
+  font-weight: 600;
+}
+h1 {
+  font-size: 32px;
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 0.3em;
+}
+h2 { font-size: 28px; }
+h3 { font-size: 24px; }
+h4 { font-size: 20px; }
+h5 { font-size: 18px; }
+h6 { font-size: 16px; }
+/* === hr === */
+hr {
+  height: 1px;
+  box-sizing: border-box;
+  background: var(--border-color);
+  border: none;
+}
+
+/* === paragraph & inline === */
+p {
+  margin-top: 16px;
+  margin-bottom: 0;
+}
+p + p {
+  margin-top: 24px;
+}
+strong {
+  font-weight: 800;
+  color: var(--title-color);
+}
+.vscode-dark strong {
+  color: #cfdfff;
+}
+u {
+  text-underline-offset: 4px;
+  text-decoration-thickness: 1.5px;
+}
+em {
+  font-weight: 400;
+}
+del {
+  color: var(--text-grey);
+  text-decoration: line-through;
+  text-decoration-color: var(--color-5);
+}
+mark {
+  border-radius: 5px;
+  background-color: var(--color-1);
+  padding: 0 4px;
+  color: var(--bg-color);
+}
+.vscode-dark mark {
+  color: rgb(250, 250, 250);
+}
+
+/* === link === */
+a {
+  font-weight: 500;
+  text-decoration: none;
+  color: var(--color-1);
+  text-underline-offset: 4px;
+}
+a:hover {
+  color: var(--color-2);
+  text-decoration: underline;
+}
+
+/* === list === */
+ul, ol {
+  margin-top: 0;
+  margin-bottom: 0;
+  margin-left: 0;
+}
+p + ul,
+p + ol,
+blockquote > ul,
+blockquote > ol {
+  margin-top: 11px;
+}
+ul {
+  padding-left: 36px;
+}
+ol {
+  padding-left: 40px;
+}
+ol ol {
+  margin-left: -7px;
+}
+ol > li > ul {
+  margin-left: -7px;
+}
+ul > li > ol {
+  margin-left: -2px;
+}
+li {
+  margin-top: 6px;
+}
+li > p {
+  margin: -5px 0;
+}
+
+/* === image === */
+img {
+  max-width: 100%;
+  border-radius: 8px;
+}
+/* === inline code === */
+code {
+  border-radius: 4px;
+  background: var(--color-1-0-a);
+  padding: 3px 5px;
+  color: var(--text-code);
+  font-size: 14px;
+  font-family: var(--monospace);
+}
+h1 code { font-size: 26px; }
+h2 code { font-size: 22px; }
+h3 code { font-size: 18px; }
+h4 code { font-size: 16px; }
+
+/* === code block === */
+pre {
+  margin-top: 16px;
+  margin-bottom: 0;
+  box-sizing: border-box;
+  background: var(--bg-color2);
+  border-radius: 8px;
+  font-size: 14px;
+  color: var(--text-code);
+}
+pre code {
+  display: block;
+  padding: 16px;
+  overflow: auto;
+  background: none;
+  border-radius: 0;
+  font-size: inherit;
+  color: var(--vscode-editor-foreground, inherit);
+  tab-size: 4;
+}
+
+/* === blockquote === */
+blockquote {
+  margin-top: 16px;
+  margin-bottom: 0;
+  padding: 16px;
+  background: var(--color-1-0-b);
+  box-sizing: border-box;
+  border-radius: 8px;
+  border-left: 4px solid var(--color-1);
+}
+blockquote > *:first-child {
+  margin-top: 0;
+}
+blockquote > *:last-child {
+  margin-bottom: 0;
+}
+
+/* === table === */
+table {
+  width: 100%;
+  margin-top: 16px;
+  margin-bottom: 0;
+  border-radius: 8px;
+  border-collapse: separate;
+  border-spacing: 0;
+  border: 1px solid var(--border-color);
+  overflow: hidden;
+}
+table thead tr th {
+  background: var(--bg-color2);
+}
+table tbody tr:nth-child(even) td {
+  background: var(--bg-color2);
+}
+table tbody tr:nth-child(odd) td {
+  background: var(--bg-color);
+}
+table tr th, table tr td {
+  padding: 10px;
+}
+table tr td,
+table thead tr th {
+  border-left: 1px solid var(--border-color);
+}
+table tbody tr td:first-of-type,
+table thead tr th:first-of-type {
+  border-left: none;
+}
+
+/* === sup, sub, kbd === */
+sup, sub {
+  font-size: 12px;
+}
+kbd {
+  display: inline-block;
+  border: none;
+  border-radius: 5px;
+  background: var(--title-color);
+  padding: 0 6px;
+  font-size: 14px;
+  font-weight: 900;
+  color: var(--bg-color);
+}
+.vscode-dark kbd {
+  background: var(--color-2);
+  color: rgb(250, 250, 250);
+}
+
+/* === selection === */
+::selection {
+  background: var(--color-2-0-c);
+}
+
+/* === checkbox (task list) === */
+input[type="checkbox"] {
+  margin-right: 10px;
+  width: 14px;
+  height: 14px;
+  box-sizing: border-box;
+  background: transparent;
+  border: 1px solid var(--border-color);
+  border-radius: 3px;
+  appearance: none;
+  -webkit-appearance: none;
+  vertical-align: middle;
+  position: relative;
+}
+input[type="checkbox"]:checked {
+  background: var(--color-1);
+  border-color: transparent;
+}
+input[type="checkbox"]:checked::after {
+  content: "";
+  display: block;
+  position: absolute;
+  bottom: 2.5px;
+  left: 3.5px;
+  width: 5px;
+  height: 9px;
+  background: transparent;
+  border: 2px solid #fff;
+  border-top: none;
+  border-left: none;
+  transform: rotate(40deg);
+}

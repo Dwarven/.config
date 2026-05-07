@@ -7,6 +7,13 @@
 cd ~ && rm -rf .config && git clone https://github.com/Dwarven/.config.git
 ```
 
+### [Switchy](https://github.com/zero-peak/ZeroOmega)
+[Chrome](https://chromewebstore.google.com/detail/pfnededegaaopdmhkdmcofjmoldfiped)、[Edge](https://microsoftedge.microsoft.com/addons/detail/zeroomegaproxy-switchy-/dmaldhchmoafliphkijbfhaomcgglmgd)、[Firefox](https://addons.mozilla.org/en-US/firefox/addon/zeroomega)
+```
+https://github.com/Dwarven/.config/raw/master/switchy.bak
+https://fastly.jsdelivr.net/gh/Dwarven/.config@master/switchy.bak
+```
+
 ### [oh-my-zsh](https://ohmyz.sh)
 ```sh
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
@@ -28,12 +35,12 @@ ln -sfv ~/.config/lazygit/config.yml ~/Library/Application\ Support/lazygit
 
 ### [yazi](https://yazi-rs.github.io)
 ```sh
-brew install sevenzip ouch nushell vlc ripgrep starship font-meslo-lg-nerd-font yazi
+brew install sevenzip ouch nushell vlc ripgrep starship font-hack-nerd-font
 ```
 
 ### [iTerm2](https://iterm2.com)
 ```sh
-brew install font-meslo-lg-nerd-font
+brew install --cask iterm2 font-hack-nerd-font
 ```
 
 `Preferences` -> `General` -> `Preferences` -> `Load preferences from a custom folder or URL`, use the URL: https://github.com/Dwarven/.config/raw/master/iTerm2_Preferences/com.googlecode.iterm2.plist

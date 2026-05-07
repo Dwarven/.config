@@ -39,6 +39,7 @@ alias grep="grep --color=always"
 # path
 #
 if [ "$(uname)"=="Darwin" ]; then
+  export BASH_SILENCE_DEPRECATION_WARNING=1
   export PATH="/Applications/Sublime Text.app/Contents/SharedSupport/bin:$PATH"
   if [ "$(uname -m)"=="arm64" ] && [ "$(which brew)"=="brew not found" ]; then
     export PATH="$PATH:/opt/homebrew/bin"
@@ -92,10 +93,40 @@ alias make_zip='cleanup_ds_store && zip -r -y "${PWD##*/}".zip ./'
 alias make_tar_xz='cleanup_ds_store && tar cvfJ "${PWD##*/}".tar.xz *'
 
 #
+# yazi
+#
+function y() {
+  local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
+  command yazi "$@" --cwd-file="$tmp"
+  IFS= read -r -d '' cwd < "$tmp"
+  [ "$cwd" != "$PWD" ] && [ -d "$cwd" ] && builtin cd -- "$cwd"
+  rm -f -- "$tmp"
+}
+
+#
+# lazygit
+#
+bind '"\C-g":"lazygit\C-m"'
+
+#
 # tmux
 #
 alias tmn="tmux new -s"
 alias tma="tmux attach-session"
+
+#
+# fzf
+#
+# brew install bat ccat fzf the_silver_searcher
+# To select/copy text from preview: hold Option (macOS) or Shift (Linux/Win) while dragging
+#
+export FZF_DEFAULT_OPTS='--style=full --preview "[[ $(file --mime {}) =~ binary ]] && echo {} is a binary file || (bat --style=numbers --color=always --line-range :500 {} || ccat --color=always {} || highlight -O ansi -l {} || cat {}) 2> /dev/null | head -500"'
+export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git -g ""'
+export FZF_COMPLETION_TRIGGER='\'
+export FZF_TMUX=1
+export FZF_TMUX_HEIGHT='80%'
+export FZF_PREVIEW_COMMAND='[[ $(file --mime {}) =~ binary ]] && echo {} is a binary file || (bat --style=numbers --color=always --line-range :500 {} || ccat --color=always {} || highlight -O ansi -l {} || cat {}) 2> /dev/null | head -500'
+command -v fzf &>/dev/null && eval "$(fzf --bash)"
 
 #
 # Git Functions
@@ -289,3 +320,16 @@ alias glum='git pull upstream master'
 
 alias gwch='git whatchanged -p --abbrev-commit --pretty=medium'
 alias gwip='git add -A; git rm $(git ls-files --deleted) 2> /dev/null; git commit --no-verify --no-gpg-sign -m "--wip-- [skip ci]"'
+
+# mise — ensure ~/.local/share/mise/shims is on PATH
+[[ -d "$HOME/.local/share/mise/shims" ]] && export PATH="$HOME/.local/share/mise/shims:$PATH"
+
+# OpenClaw Completion
+[[ -f "$HOME/.openclaw/completions/openclaw.bash" ]] && source "$HOME/.openclaw/completions/openclaw.bash"
+
+[[ -f "$HOME/.local/bin/env" ]] && . "$HOME/.local/bin/env"
+
+# Hermes Agent — ensure ~/.local/bin is on PATH
+[[ -d "$HOME/.local/bin" ]] && export PATH="$HOME/.local/bin:$PATH"
+
+true

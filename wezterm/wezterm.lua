@@ -13,7 +13,7 @@ config.macos_window_background_blur = 10
 config.hide_tab_bar_if_only_one_tab = false
 config.show_tab_index_in_tab_bar = true
 config.show_new_tab_button_in_tab_bar = false
-config.font = wezterm.font("MesloLGS Nerd Font", { weight = "Regular" })
+config.font = wezterm.font("Hack Nerd Font", { weight = "Regular" })
 config.window_close_confirmation = "NeverPrompt"
 config.inactive_pane_hsb = { saturation = 0.9, brightness = 0.8 }
 config.adjust_window_size_when_changing_font_size = false

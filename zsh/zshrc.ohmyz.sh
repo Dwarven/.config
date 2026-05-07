@@ -68,7 +68,7 @@ ZSH_THEME="robbyrussell"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git sudo)
+plugins=(git sudo zfm)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -144,16 +144,23 @@ alias grus='git rev-parse --abbrev-ref --symbolic-full-name @{u} >/dev/null 2>&1
 #
 # yazi
 #
-function yz() {
+function y() {
   local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
-  yazi "$@" --cwd-file="$tmp"
+  command yazi "$@" --cwd-file="$tmp"
   IFS= read -r -d '' cwd < "$tmp"
-  [ -n "$cwd" ] && [ "$cwd" != "$PWD" ] && builtin cd -- "$cwd"
+  [ "$cwd" != "$PWD" ] && [ -d "$cwd" ] && builtin cd -- "$cwd"
   rm -f -- "$tmp"
 }
-bindkey -M main  -s '^Y' 'yz^J'
-bindkey -M viins -s '^Y' '\eddiyz^J'
-bindkey -M vicmd -s '^Y' 'ddiyz^J'
+bindkey -M main  -s '^Y' 'y^J'
+bindkey -M viins -s '^Y' '\eddiy^J'
+bindkey -M vicmd -s '^Y' 'ddiy^J'
+
+#
+# lazygit
+#
+bindkey -M main  -s '^G' 'lazygit^J'
+bindkey -M viins -s '^G' '\eddilazygit^J'
+bindkey -M vicmd -s '^G' 'ddilazygit^J'
 
 #
 # Cleanup .DS_Store
@@ -175,13 +182,6 @@ alias make_tar_xz='cleanup_ds_store && tar cvfJ "${PWD##*/}".tar.xz *'
 #
 alias tmn="tmux new -s"
 alias tma="tmux attach-session"
-
-#
-# lazygit
-#
-bindkey -M main  -s '^G' 'lazygit^J'
-bindkey -M viins -s '^G' '\eddilazygit^J'
-bindkey -M vicmd -s '^G' 'ddilazygit^J'
 
 #
 # edit-command-line
@@ -224,15 +224,40 @@ bindkey -M vicmd 'j' down-line-or-beginning-search
 #
 # fzf
 #
-# brew install ccat fzf the_silver_searcher
+# brew install bat ccat fzf the_silver_searcher
+# To select/copy text from preview: hold Option (macOS) or Shift (Linux/Win) while dragging
 #
-export FZF_DEFAULT_OPTS='--preview "[[ $(file --mime {}) =~ binary ]] && echo {} is a binary file || (ccat --color=always {} || highlight -O ansi -l {} || cat {}) 2> /dev/null | head -500"'
+export FZF_DEFAULT_OPTS='--style=full --preview "[[ $(file --mime {}) =~ binary ]] && echo {} is a binary file || (bat --style=numbers --color=always --line-range :500 {} || ccat --color=always {} || highlight -O ansi -l {} || cat {}) 2> /dev/null | head -500"'
 export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git -g ""'
 export FZF_COMPLETION_TRIGGER='\'
 export FZF_TMUX=1
 export FZF_TMUX_HEIGHT='80%'
-export FZF_PREVIEW_COMMAND='[[ $(file --mime {}) =~ binary ]] && echo {} is a binary file || (ccat --color=always {} || highlight -O ansi -l {} || cat {}) 2> /dev/null | head -500'
-[ -f ~/.config/zsh/fzf.zsh ] && source ~/.config/zsh/fzf.zsh
+export FZF_PREVIEW_COMMAND='[[ $(file --mime {}) =~ binary ]] && echo {} is a binary file || (bat --style=numbers --color=always --line-range :500 {} || ccat --color=always {} || highlight -O ansi -l {} || cat {}) 2> /dev/null | head -500'
+(( $+commands[fzf] )) && source <(fzf --zsh)
+
+#
+# Zsh Fuzzy Marks
+#
+# git clone https://github.com/pabloariasal/zfm ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zfm}
+#
+[ -f "$HOME/.oh-my-zsh/custom/plugins/zfm/zfm.zsh" ] && source "$HOME/.oh-my-zsh/custom/plugins/zfm/zfm.zsh"
+
+#
+# open current directory
+#
+o() {
+  if [[ "$OSTYPE" == darwin* ]]; then
+    command open .
+  elif command -v xdg-open >/dev/null 2>&1; then
+    command xdg-open . >/dev/null 2>&1 &
+  else
+    echo "No supported opener found (open/xdg-open)."
+    return 1
+  fi
+}
+bindkey -M main  -s '^O' 'o^J'
+bindkey -M viins -s '^O' '\eddio^J'
+bindkey -M vicmd -s '^O' 'ddio^J'
 
 [ "$(uname)" = "Linux" ] && [ -f /etc/zsh_command_not_found ] && source /etc/zsh_command_not_found
 
@@ -242,3 +267,16 @@ export FZF_PREVIEW_COMMAND='[[ $(file --mime {}) =~ binary ]] && echo {} is a bi
 
 # completions
 [ -d "$HOME/.zsh/completions" ] && fpath+=("$HOME/.zsh/completions")
+
+# mise — ensure ~/.local/share/mise/shims is on PATH
+[[ -d "$HOME/.local/share/mise/shims" ]] && export PATH="$HOME/.local/share/mise/shims:$PATH"
+
+# OpenClaw Completion
+[[ -f "$HOME/.openclaw/completions/openclaw.zsh" ]] && source "$HOME/.openclaw/completions/openclaw.zsh"
+
+[[ -f "$HOME/.local/bin/env" ]] && . "$HOME/.local/bin/env"
+
+# Hermes Agent — ensure ~/.local/bin is on PATH
+[[ -d "$HOME/.local/bin" ]] && export PATH="$HOME/.local/bin:$PATH"
+
+true
