@@ -1,0 +1,139 @@
+# ─────────────────────────────────────────
+# Font: HackNF-Regular 14
+# ─────────────────────────────────────────
+font-family = Hack Nerd Font
+font-size = 14
+font-thicken = true
+bold-is-bright = true
+
+# ─────────────────────────────────────────
+# Window
+# Columns: 80, Rows: 25
+# Maximize Columns: 800, Rows: 800
+# Transparency: ~0.10 → background-opacity = 0.90
+# Blur: enabled, Blur Radius: 10
+# ─────────────────────────────────────────
+window-width = 800
+window-height = 800
+window-padding-x = 10
+window-padding-y = 10
+window-position-x = 0
+window-position-y = 0
+background-opacity = 0.90
+background-blur-radius = 10
+
+# ─────────────────────────────────────────
+# Cursor
+# Blinking Cursor: false
+# ─────────────────────────────────────────
+cursor-style = block
+cursor-style-blink = false
+
+# ─────────────────────────────────────────
+# Scrollback
+# Scrollback Lines: 1000 (Unlimited Scrollback: false)
+# ─────────────────────────────────────────
+scrollback-limit = 1000
+
+# ─────────────────────────────────────────
+# Terminal
+# Terminal Type: xterm-256color
+# ─────────────────────────────────────────
+# term = xterm-256color
+
+# ─────────────────────────────────────────
+# Clipboard
+# Copy on select: selection clipboard + system clipboard
+# ─────────────────────────────────────────
+copy-on-select = clipboard
+
+# ─────────────────────────────────────────
+# Colors (Display P3 → sRGB converted)
+# ─────────────────────────────────────────
+background = #2c2c2c
+foreground = #dcdcdc
+
+cursor-color = #eeeeee
+cursor-text = #000000
+
+selection-background = #607d8b
+selection-foreground = #eceff1
+
+# ANSI 0–7 (normal)
+palette = 0=#546e7a
+palette = 1=#ff5252
+palette = 2=#69f0ae
+palette = 3=#f0f98b
+palette = 4=#bd92f8
+palette = 5=#ff78c5
+palette = 6=#8be8fd
+palette = 7=#ffffff
+
+# ANSI 8–15 (bright)
+palette = 8=#b0bec5
+palette = 9=#ff8a80
+palette = 10=#b9f6ca
+palette = 11=#feffa4
+palette = 12=#d6abfe
+palette = 13=#ff92df
+palette = 14=#a3fefe
+palette = 15=#ffffff
+
+# ─────────────────────────────────────────
+# Keybindings
+# ─────────────────────────────────────────
+
+keybind = super+v=paste_from_clipboard
+keybind = super+shift+0=toggle_maximize
+
+# Ctrl+- → 0x1f
+keybind = ctrl+minus=text:\x1f
+
+# Ctrl+2 → 0x00 (NUL)
+keybind = ctrl+two=text:\x00
+
+# Ctrl+3 → 0x1b (ESC)
+keybind = ctrl+three=text:\x1b
+
+# Ctrl+4 → 0x1c (FS)
+keybind = ctrl+four=text:\x1c
+
+# Ctrl+5 → 0x1d (GS)
+keybind = ctrl+five=text:\x1d
+
+# Ctrl+6 → 0x1e (RS)
+keybind = ctrl+six=text:\x1e
+
+# Ctrl+7 → 0x1f (US)
+keybind = ctrl+seven=text:\x1f
+
+# Ctrl+8 → 0x7f (backward delete)
+keybind = ctrl+eight=text:\x7f
+
+# ─────────────────────────────────────────
+# Shell integration
+# ─────────────────────────────────────────
+shell-integration = detect
+shell-integration-features = cursor,sudo,title,ssh-env
+
+# ─────────────────────────────────────────
+# macOS
+# Option key: normal (not Meta), follow system theme
+# ─────────────────────────────────────────
+macos-option-as-alt = left
+window-theme = auto
+
+# ─────────────────────────────────────────
+# Close Behavior
+# Disable quit confirmation dialog
+# Exit immediately without prompt
+# ─────────────────────────────────────────
+confirm-close-surface = false
+
+# ─────────────────────────────────────────
+# Config includes
+# Load extra per-machine / private overrides
+# Paths are relative to this config file directory
+# Prefix with ? to ignore missing file errors
+# ─────────────────────────────────────────
+config-file = "?local.ghostty"

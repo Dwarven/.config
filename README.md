@@ -45,6 +45,12 @@ brew install --cask iterm2 font-hack-nerd-font
 
 `Preferences` -> `General` -> `Preferences` -> `Load preferences from a custom folder or URL`, use the URL: https://github.com/Dwarven/.config/raw/master/iTerm2_Preferences/com.googlecode.iterm2.plist
 
+### [Ghostty](https://ghostty.org)
+```sh
+brew install --cask ghostty
+ln -sfv ~/.config/ghostty/config.ghostty ~/Library/Application\ Support/com.mitchellh.ghostty
+```
+
 ### [WezTerm](https://wezterm.org)
 ```sh
 brew install --cask wezterm
