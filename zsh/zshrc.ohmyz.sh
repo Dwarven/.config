@@ -151,6 +151,7 @@ alias gros='git reset origin/$(git_current_branch) --soft'
 alias gruh='git rev-parse --abbrev-ref --symbolic-full-name @{u} >/dev/null 2>&1 && git reset --hard @{u} || echo "\e[1;31mNo tracking remote branch. Skipping reset.\e[0m"'
 alias grum='git rev-parse --abbrev-ref --symbolic-full-name @{u} >/dev/null 2>&1 && git reset  --mixed @{u} || echo "\e[1;31mNo tracking remote branch. Skipping reset.\e[0m"'
 alias grus='git rev-parse --abbrev-ref --symbolic-full-name @{u} >/dev/null 2>&1 && git reset  --soft @{u} || echo "\e[1;31mNo tracking remote branch. Skipping reset.\e[0m"'
+alias gft='git tag --delete $(git tag) && git fetch --all --prune'
 
 #
 # yazi

@@ -1,0 +1,22 @@
+model_provider = "OpenAI"
+# sol terra luna
+model = "gpt-5.6-sol"
+review_model = "gpt-5.6-sol"
+# none low medium high xhigh max ultra
+model_reasoning_effort = "xhigh"
+disable_response_storage = true
+network_access = "enabled"
+windows_wsl_setup_acknowledged = true
+
+approval_policy = "never"
+sandbox_mode = "workspace-write"
+
+[model_providers.OpenAI]
+name = "OpenAI"
+wire_api = "responses"
+requires_openai_auth = true
+base_url = "https://xx.xx.xx/v1"
+
+[features]
+goals = true
+js_repl = false

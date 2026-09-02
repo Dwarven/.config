@@ -214,6 +214,7 @@ alias gdw='git diff --word-diff'
 
 alias gf='git fetch'
 alias gfa='git fetch --all --prune'
+alias gft='git tag --delete $(git tag) && git fetch --all --prune'
 alias gfo='git fetch origin'
 
 alias gfg='git ls-files | grep'
