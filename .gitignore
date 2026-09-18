@@ -41,3 +41,7 @@
 !/claude/scripts/
 !/claude/commands/
 !/claude/agents/
+!/codex/
+/codex/*
+!/codex/AGENTS.md
+!/codex/config.toml

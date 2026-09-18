@@ -98,3 +98,10 @@ defaults write wang.jianing.app.OpenInEditor-Lite LiteDefaultEditor Visual\ Stud
 brew install --cask claude-code
 rm -rf ~/.claude && ln -sv .config/claude ~/.claude
 ```
+
+### [Codex](https://openai.com/codex)
+
+```sh
+brew install --cask codex
+mkdir -p ~/.codex && ln -sfv ../.config/codex/AGENTS.md ~/.codex/AGENTS.md && ln -sfv ../.config/codex/config.toml ~/.codex/config.toml
+```
