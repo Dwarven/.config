@@ -199,6 +199,7 @@ alias allow-mac-apps-from-anywhere="[[ \`uname -a\` == Darwin* ]] && sudo spctl 
 alias gwRu='git rev-parse --abbrev-ref --symbolic-full-name @{u} >/dev/null 2>&1 && git reset --hard @{u} || echo "\e[1;31mNo tracking remote branch. Skipping reset.\e[0m"'
 alias gwru='git rev-parse --abbrev-ref --symbolic-full-name @{u} >/dev/null 2>&1 && git reset  --soft @{u} || echo "\e[1;31mNo tracking remote branch. Skipping reset.\e[0m"'
 alias glgg='git log --graph'
+alias gft='git tag --delete $(git tag) && git fetch --all --prune'
 
 #
 # ranger
@@ -325,6 +326,19 @@ export FZF_TMUX_HEIGHT='80%'
 export FZF_PREVIEW_COMMAND='[[ $(file --mime {}) =~ binary ]] && echo {} is a binary file || (bat --style=numbers --color=always --line-range :500 {} || ccat --color=always {} || highlight -O ansi -l {} || cat {}) 2> /dev/null | head -500'
 (( $+commands[fzf] )) && source <(fzf --zsh)
 
+# Temporary: Keep Mac Awake
+# caffeinate options and descriptions:
+# -d Prevent the display from sleeping
+# -i Prevent the system from idle sleeping
+# -m Prevent disks from idle sleeping
+# -s Prevent system sleep (when connected to AC power)
+# -u Declare user activity
+alias awake-on='pgrep -f "^/usr/bin/caffeinate -dimsu$" >/dev/null || (nohup /usr/bin/caffeinate -dimsu >/dev/null 2>&1 </dev/null &)'
+alias awake-off='pkill -f "^/usr/bin/caffeinate -dimsu$" 2>/dev/null || true'
+
+# VNC: Restart the macOS Screen Sharing service
+alias fixvnc="sudo pkill screensharingd"
+
 o() {
   if [[ "$OSTYPE" == darwin* ]]; then
     command open .
@@ -365,5 +379,8 @@ autoload -Uz add-zsh-hook && add-zsh-hook precmd _zshrc_precmd
 
 # Hermes Agent — ensure ~/.local/bin is on PATH
 [[ -d "$HOME/.local/bin" ]] && export PATH="$HOME/.local/bin:$PATH"
+
+# Kiro Shell Integration
+[[ "$TERM_PROGRAM" == "kiro" ]] && . "$(kiro --locate-shell-integration-path zsh)"
 
 true
